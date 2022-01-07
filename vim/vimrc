@@ -1,6 +1,6 @@
+
 nnoremap <c-j> :cnext<cr>
 nnoremap <c-k> :cprev<cr>
-nnoremap <c-o> :copen<cr>
 nnoremap <c-o> <c-o>
 nnoremap <c-l> :ccl<cr>
 
@@ -31,6 +31,11 @@ nnoremap zxl :w<CR>:make lint<CR>
 nnoremap zxv :w<CR>:make validate<CR>
 
 nnoremap - :w<CR>:E<CR> :set number<CR>
+
+
+
+
+
 
 nnoremap <CR> A<CR><ESC>
 

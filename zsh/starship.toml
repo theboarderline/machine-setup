@@ -72,11 +72,11 @@ disabled = false
 "gke_stage-acm-gke-project_us-central1_primary-cluster" = "acm-stage"
 "gke_prod-acm-gke-project_us-central1_primary-cluster" = "acm-prod"
 
-"gke_ops-argocd-gke-project_us-central1_primary-cluster" = "argocd-ops"
-"gke_dev-argocd-gke-project_us-central1_primary-cluster" = "argocd-dev"
-"gke_test-argocd-gke-project_us-central1_primary-cluster" = "argocd-test"
-"gke_stage-argocd-gke-project_us-central1_primary-cluster" = "argocd-stage"
-"gke_prod-argocd-gke-project_us-central1_primary-cluster" = "argocd-prod"
+"gke_o-argo-gke-project-qss_us-central1_primary-cluster" = "ops-argo"
+"gke_d-argo-gke-project-qss_us-central1_primary-cluster" = "dev-argo"
+"gke_t-argo-gke-project-qss_us-central1_primary-cluster" = "test-argo"
+"gke_s-argo-gke-project-qss_us-central1_primary-cluster" = "stage-argo"
+"gke_p-argo-gke-project-qss_us-central1_primary-cluster" = "prod-argo"
 
 [terraform]
 format = "[🏎💨 $workspace]($style) "

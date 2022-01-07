@@ -59,6 +59,7 @@ alias ll='ls -l'
 
 alias b='byobu'
 alias v='vim .'
+alias nv='nvim .'
 
 alias python='python3'
 alias pip='pip3'
