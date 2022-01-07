@@ -250,7 +250,7 @@ M.load_syntax = function(palette)
       bg = palette.black,
     },
     Constant = {
-      fg = palette.aqua,
+      fg = palette.purple,
     },
     Number = {
       fg = palette.purple,
@@ -278,6 +278,9 @@ M.load_syntax = function(palette)
     },
     Typedef = {
       fg = palette.aqua,
+    },
+    yamlPlainScalar = {
+      fg = palette.yellow,
     },
     Identifier = {
       fg = palette.red,
@@ -518,7 +521,7 @@ M.load_plugin_syntax = function(palette)
       fg = palette.pink,
     },
     TSField = {
-      fg = palette.red,
+      fg = palette.white,
     },
     TSFloat = {
       fg = palette.purple,
