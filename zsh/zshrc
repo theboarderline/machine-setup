@@ -57,9 +57,9 @@ alias cdf='cd ~/Desktop/projects/walker/finley'
 alias ls='ls -aG'
 alias ll='ls -l'
 
+alias vim='nvim'
 alias b='byobu'
 alias v='vim .'
-alias nv='nvim .'
 
 alias python='python3'
 alias pip='pip3'

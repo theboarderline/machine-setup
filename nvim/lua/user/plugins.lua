@@ -59,7 +59,6 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
-  use 'tanvirtin/monokai.nvim'
   -- use 'kdheepak/lazygit.nvim'
 
 
@@ -77,7 +76,9 @@ return packer.startup(function(use)
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use 'tanvirtin/monokai.nvim'
   use "lunarvim/darkplus.nvim"
+  use 'folke/tokyonight.nvim'
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -107,6 +108,7 @@ return packer.startup(function(use)
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "p00f/nvim-ts-rainbow"
+  use "nvim-treesitter/playground"
 
   -- Git
   use "lewis6991/gitsigns.nvim"

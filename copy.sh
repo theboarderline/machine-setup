@@ -24,6 +24,7 @@ pull () {
 
     rm -rf ~/.config/nvim
     cp -r ./nvim ~/.config
+    cp ./monokai.lua ~/.local/share/nvim/site/pack/packer/start/monokai.nvim/lua/monokai.lua
 
 }
 
@@ -43,6 +44,7 @@ push () {
 
     rm -rf ./nvim
     cp -r ~/.config/nvim .
+    cp ~/.local/share/nvim/site/pack/packer/start/monokai.nvim/lua/monokai.lua monokai.lua
 }
 
 
