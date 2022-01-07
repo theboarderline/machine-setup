@@ -1,0 +1,161 @@
+alias s='source'
+alias ss='source envs/env.sh'
+
+#alias docker='nerdctl'
+
+alias merge-r='git checkout stage; git pull; git merge main; git push; git checkout test; git pull; git merge stage; git push; git checkout dev; git pull; git merge test; git push; git checkout ops; git pull; git merge dev; git push ; git checkout ops'
+alias merge-a='merge-d; merge-t; merge-s; merge-m'
+
+alias merge-o='git checkout ops; git pull; git merge walker; git push; git checkout walker'
+alias merge-d='git checkout dev; git pull; git merge ops; git push; git checkout ops'
+alias merge-t='git checkout test; git pull; git merge dev; git push; git checkout ops'
+alias merge-s='git checkout stage; git pull; git merge test; git push; git checkout ops'
+alias merge-m='git checkout main; git pull; git merge stage; git push; git checkout ops'
+
+alias merge-z='git checkout main; git pull; git merge dev; git push; git checkout dev'
+
+# Common ssh file manipulations
+alias mw='gcloud config set account walker.obrien@mavenwave.com; cp ~/.ssh/id_rsa.mw ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.mw ~/.ssh/id_rsa.pub; cp ~/.terraform.d/credentials.mw.tfrc.json ~/.terraform.d/credentials.tfrc.json'
+
+alias wob='gcloud config set account wnobrien@lakegames.us; cp ~/.ssh/id_rsa.wob ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.wob ~/.ssh/id_rsa.pub; cp ~/.terraform.d/credentials.wob.tfrc.json ~/.terraform.d/credentials.tfrc.json'
+
+alias getpub='cat ~/.ssh/id_rsa.pub'
+
+# for x in `docker images | awk '{print $3}'`; do docker image rm $x --force ; done
+alias ops='source ./envs/ops.sh'
+alias dev='source ./envs/dev.sh'
+alias testt='source ./envs/test.sh'
+alias stage='source ./envs/stage.sh'
+alias prod='source ./envs/prod.sh'
+
+alias thor='source ./envs/thor.sh'
+
+alias cdaa='cd ~/Desktop/projects/mw/argocd'
+alias cdbo='cd ~/Desktop/projects/mw/bigo'
+alias cda='cd ~/Desktop/projects/mw/mayo/shared-vpc-anthos'
+alias cdacm='cd ~/Desktop/projects/mw/mayo/acm-factory'
+alias cdz='cd ~/Desktop/projects/mw/spotify-operator'
+
+alias cdm='cd ~/Desktop/clients/mayo/anthos'
+alias cdi='cd ~/Desktop/projects/ignite'
+
+alias cdw='cd ~/Desktop/projects/walker'
+alias cdt='cd ~/Desktop/projects/walker/terraform-modules'
+alias cdh='cd ~/Desktop/projects/walker/helm-charts'
+alias cde='cd ~/Desktop/projects/walker/machine-setup'
+alias cdr='cd ~/Desktop/projects/walker/sandbox/rancher-infra'
+alias cdg='cd ~/Desktop/projects/walker/new-repos/platforms/shared-gke-platform'
+alias cdacm='cd ~/Desktop/projects/walker/acm'
+alias cdl='cd ~/Desktop/projects/walker/lakegames'
+alias cdb='cd ~/Desktop/projects/walker/boatload'
+alias cdc='cd ~/Desktop/projects/walker/coleman'
+alias cds='cd ~/Desktop/projects/walker/standwithpaul'
+alias cdd='cd ~/Desktop/projects/walker/dadcoin'
+alias cdp='cd ~/Desktop/projects/walker/paytonpower'
+alias cdf='cd ~/Desktop/projects/walker/finley'
+
+alias ls='ls -aG'
+alias ll='ls -l'
+
+alias b='byobu'
+alias v='vim .'
+
+alias python='python3'
+alias pip='pip3'
+alias rss='python manage.py runserver'
+
+alias rghc='ghc -main-is Data.Algabraic.Crypt.RSA -o main Data/Algabraic/Crypt/RSA.hs'
+alias rghci='ghci Data/Algabraic/Crypt/RSA.hs'
+
+alias ys='yarn start'
+
+alias env='source env/bin/activate'
+alias deac='deactivate'
+alias cmod='chmod +x ./bin/*'
+
+alias sv='source ~/.vimrc'
+alias sb='source ~/.zshrc'
+alias sp='source ~/.profile'
+
+alias vimv='vim ~/.vimrc; source ~/.vimrc'
+alias vimb='vim ~/.zshrc; source ~/.zshrc'
+alias vimp='vim ~/.profile; source ~/.profile'
+alias vimz="vim ~/.config/starship.toml"
+
+alias auth='./bin/auth.sh'
+alias auth2='./bin/auth2.sh'
+
+alias gbi='gcloud beta interactive'
+alias gcsp='gcloud config set project'
+
+alias gac='echo $GOOGLE_APPLICATION_CREDENTIALS'
+alias cgac='cat $GOOGLE_APPLICATION_CREDENTIALS'
+
+alias ggac='export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-accounts/config.json; gac'
+
+alias dgac='export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-accounts/dev-config.json; gac'
+alias tgac='export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-accounts/test-config.json; gac'
+alias sgac='export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-accounts/stage-config.json; gac'
+alias pgac='export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-accounts/prod-config.json; gac'
+
+alias tf='terraform'
+alias tff='terraform fmt'
+alias tfi='terraform init'
+alias tfv='terraform validate'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+alias tfaa='terraform apply -auto-approve'
+alias tfd='terraform destroy'
+
+
+# Helm Shortcuts
+alias ins='./bin/helm.sh install'
+alias del='./bin/helm.sh delete'
+
+
+# Kubectl Configurations
+source <(kubectl completion bash)
+source <(kubectl completion zsh)
+
+complete -F __start_kubectl k
+
+alias k='kubectl'
+alias kcsc='kubectl config set-context --current --namespace'
+
+alias kg='kubectl get'
+alias kga='kubectl get all'
+alias kgp='kubectl get pods'
+alias kgs='kubectl get svc'
+alias kgn='kubectl get nodes'
+alias kgi='kubectl get ingress'
+alias kgip='kubectl get computeaddress'
+alias kgm='kubectl get managedcertificate'
+alias kgc='kubectl get ciliumnetworkpolicy'
+
+alias kge='kubectl get externalsecrets'
+alias kde='kubectl describe externalsecrets'
+
+alias ka='kubectl apply -f'
+alias kl='kubectl logs'
+alias kd='kubectl describe'
+alias kdp='kubectl describe pod'
+alias ke='kubectl exec -it'
+
+
+# Git shortcuts
+alias gs='git status'
+alias gd='git diff'
+alias gss='git status -s'
+alias ga='git add -A'
+alias gc='git commit -m'
+alias gp='git fetch; git pull; git push'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+eval "$(starship init zsh)"
+

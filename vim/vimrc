@@ -1,0 +1,45 @@
+nnoremap <c-j> :cnext<cr>
+nnoremap <c-k> :cprev<cr>
+nnoremap <c-o> :copen<cr>
+nnoremap <c-o> <c-o>
+nnoremap <c-l> :ccl<cr>
+
+nnoremap m :make
+
+syntax on
+set number
+set expandtab
+set tabstop=2
+set sw=2
+set backspace=indent,eol,start
+set laststatus=2
+set showmatch
+set history=100
+
+colo sublimemonokai
+
+nnoremap , :bn<CR>
+
+nnoremap ^ 0i#<ESC>
+
+vnoremap '' 0<C-v>I#<ESC>
+nmap '' gg0VG''
+nnoremap "" gg0<C-v>Gx
+
+nnoremap zz :w<CR>
+nnoremap zxl :w<CR>:make lint<CR>
+nnoremap zxv :w<CR>:make validate<CR>
+
+nnoremap - :w<CR>:E<CR> :set number<CR>
+
+nnoremap <CR> A<CR><ESC>
+
+inoremap ;; <C-n>
+
+inoremap jk <ESC>
+
+vnoremap qq :w !pbcopy<CR><CR>
+
+inoremap {<CR> {<CR>}<ESC>ko<TAB>
+nnoremap =+= yyGp$x$a<CR>{<CR>}<ESC>ko<TAB>
+
