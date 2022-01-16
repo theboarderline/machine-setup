@@ -63,7 +63,7 @@ alias b='byobu'
 alias v='vim .'
 alias nv='nvim .'
 
-#alias vim='nvim'
+alias vim='nvim'
 
 alias vimc='nvim ~/.config/nvim'
 
