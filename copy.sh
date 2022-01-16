@@ -64,6 +64,12 @@ if [[ $1 == "pull" ]]; then
 elif [[ $1 == "push" ]]; then
     push
 
+    git status
+
+    echo
+    echo "Press enter if you would like to continue"
+    echo
+
     git add -A
     git commit -m "Updating remote config files"
     git push
