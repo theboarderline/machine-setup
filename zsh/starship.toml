@@ -78,6 +78,9 @@ disabled = false
 "gke_s-argo-gke-project-qss_us-central1_primary-cluster" = "stage-argo"
 "gke_p-argo-gke-project-qss_us-central1_primary-cluster" = "prod-argo"
 
+[golang]
+disabled = true
+
 [terraform]
 format = "[🏎💨 $workspace]($style) "
 disabled = true
