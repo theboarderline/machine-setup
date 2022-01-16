@@ -68,6 +68,7 @@ elif [[ $1 == "push" ]]; then
 
     echo
     echo "Press enter if you would like to continue"
+    read waitforenter
     echo
 
     git add -A
