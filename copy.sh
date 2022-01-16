@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+MONOKAI_DIR=~/.local/share/nvim/site/pack/packer/start/monokai.nvim/lua
+
 pull () {
     if [[ ! -d "~/.vim/colors" ]]; then
         mkdir -p ~/.vim/colors
@@ -24,7 +26,13 @@ pull () {
 
     rm -rf ~/.config/nvim
     cp -r ./nvim ~/.config
-    cp ./monokai.lua ~/.local/share/nvim/site/pack/packer/start/monokai.nvim/lua/monokai.lua
+
+
+    if [[ ! -d $MONOKAI_DIR ]]; then
+      mkdir $MONOKAI_DIR 
+    fi
+
+    cp ./monokai.lua $MONOKAI_DIR
 
 }
 
@@ -44,7 +52,7 @@ push () {
 
     rm -rf ./nvim
     cp -r ~/.config/nvim .
-    cp ~/.local/share/nvim/site/pack/packer/start/monokai.nvim/lua/monokai.lua monokai.lua
+    cp $MONOKAI_DIR/monokai.lua ./monokai.lua
 }
 
 

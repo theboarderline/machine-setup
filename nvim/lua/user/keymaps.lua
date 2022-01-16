@@ -1,8 +1,8 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
 
 -- Shorten function name
+local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
@@ -31,26 +31,28 @@ keymap("n", "<leader>k", "<C-w>s", opts)
 -- Resize with arrows
 keymap("n", "<C-i>", ":resize -2<CR>", opts)
 keymap("n", "<C-m>", ":resize +2<CR>", opts)
-keymap("n", "<C-k>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-j>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-u>", ":vertical resize -2<CR>", opts)
+keymap("n", "<S-u>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Move text up and down
-keymap("n", "<S-k>", "<Esc>:m .-2<CR>", opts)
-keymap("n", "<S-j>", "<Esc>:m .+1<CR>", opts)
+keymap("n", "<C-k>", "<Esc>:m .-2<CR>", opts)
+keymap("n", "<C-j>", "<Esc>:m .+1<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
-keymap("v", "<leader>j", "<ESC>", opts)
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+
+keymap("v", "<leader>k", "<ESC>", opts)
+
+-- Move highlighted text
+keymap("v", "<C-k>", ":m .-2<CR>", opts)
+keymap("v", "<C-j>", ":m .+1<CR>", opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)

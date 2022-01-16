@@ -1,7 +1,6 @@
 alias s='source'
 alias ss='source envs/env.sh'
 
-#alias docker='nerdctl'
 
 alias merge-r='git checkout stage; git pull; git merge main; git push; git checkout test; git pull; git merge stage; git push; git checkout dev; git pull; git merge test; git push; git checkout ops; git pull; git merge dev; git push ; git checkout ops'
 alias merge-a='merge-d; merge-t; merge-s; merge-m'
@@ -57,9 +56,16 @@ alias cdf='cd ~/Desktop/projects/walker/finley'
 alias ls='ls -aG'
 alias ll='ls -l'
 
-alias vim='nvim'
+alias l='clear'
+
 alias b='byobu'
+
 alias v='vim .'
+alias nv='nvim .'
+
+alias vim='nvim'
+
+alias vimc='nvim ~/.config/nvim'
 
 alias python='python3'
 alias pip='pip3'
@@ -124,24 +130,33 @@ alias k='kubectl'
 alias kcsc='kubectl config set-context --current --namespace'
 
 alias kg='kubectl get'
-alias kga='kubectl get all'
-alias kgp='kubectl get pods'
-alias kgs='kubectl get svc'
-alias kgn='kubectl get nodes'
-alias kgi='kubectl get ingress'
-alias kgip='kubectl get computeaddress'
-alias kgm='kubectl get managedcertificate'
-alias kgc='kubectl get ciliumnetworkpolicy'
-
-alias kge='kubectl get externalsecrets'
-alias kde='kubectl describe externalsecrets'
-
-alias ka='kubectl apply -f'
-alias kl='kubectl logs'
 alias kd='kubectl describe'
-alias kdp='kubectl describe pod'
+alias kl='kubectl logs'
+alias ka='kubectl apply -f'
 alias ke='kubectl exec -it'
 
+alias kdn='kd nodes'
+alias kdp='kd pods'
+alias kds='kd svc'
+alias kdi='kd ingress'
+alias kdm='kd managedcertificate'
+alias kdc='kd ciliumnetworkpolicy'
+alias kde='kd externalsecrets'
+alias kdip='kd computeaddress'
+alias kdz='kd dnsmanagedzone'
+alias kdr='kd dnsrecordset'
+
+alias kga='kg all,ingress'
+alias kgp='kg pods'
+alias kgs='kg svc'
+alias kgn='kg nodes'
+alias kgi='kg ingress'
+alias kgm='kg managedcertificate'
+alias kgc='kg ciliumnetworkpolicy'
+alias kge='kg externalsecrets'
+alias kgip='kg computeaddress'
+alias kgz='kg dnsmanagedzone'
+alias kgr='kg dnsrecordset'
 
 # Git shortcuts
 alias gs='git status'
