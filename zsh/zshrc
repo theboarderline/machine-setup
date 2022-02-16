@@ -1,6 +1,5 @@
-alias s='source'
-alias ss='source envs/env.sh'
 
+alias docker='nerdctl'
 
 alias merge-r='git checkout stage; git pull; git merge main; git push; git checkout test; git pull; git merge stage; git push; git checkout dev; git pull; git merge test; git push; git checkout ops; git pull; git merge dev; git push ; git checkout ops'
 alias merge-a='merge-d; merge-t; merge-s; merge-m'
@@ -21,13 +20,12 @@ alias wob='gcloud config set account wnobrien@lakegames.us; cp ~/.ssh/id_rsa.wob
 alias getpub='cat ~/.ssh/id_rsa.pub'
 
 # for x in `docker images | awk '{print $3}'`; do docker image rm $x --force ; done
+alias ss='source ./envs/env.sh'
 alias ops='source ./envs/ops.sh'
 alias dev='source ./envs/dev.sh'
 alias testt='source ./envs/test.sh'
 alias stage='source ./envs/stage.sh'
 alias prod='source ./envs/prod.sh'
-
-alias thor='source ./envs/thor.sh'
 
 alias cdaa='cd ~/Desktop/projects/mw/argocd'
 alias cdbo='cd ~/Desktop/projects/mw/bigo'
@@ -63,16 +61,11 @@ alias b='byobu'
 alias v='vim .'
 alias nv='nvim .'
 
-alias vim='nvim'
-
 alias vimc='nvim ~/.config/nvim'
 
 alias python='python3'
 alias pip='pip3'
 alias rss='python manage.py runserver'
-
-alias rghc='ghc -main-is Data.Algabraic.Crypt.RSA -o main Data/Algabraic/Crypt/RSA.hs'
-alias rghci='ghci Data/Algabraic/Crypt/RSA.hs'
 
 alias ys='yarn start'
 
@@ -84,26 +77,12 @@ alias sv='source ~/.vimrc'
 alias sb='source ~/.zshrc'
 alias sp='source ~/.profile'
 
-alias vimv='vim ~/.vimrc; source ~/.vimrc'
-alias vimb='vim ~/.zshrc; source ~/.zshrc'
-alias vimp='vim ~/.profile; source ~/.profile'
-alias vimz="vim ~/.config/starship.toml"
+alias vimv='nvim ~/.vimrc; source ~/.vimrc'
+alias vimb='nvim ~/.zshrc; source ~/.zshrc'
+alias vimp='nvim ~/.profile; source ~/.profile'
+alias vimz="nvim ~/.config/starship.toml"
 
-alias auth='./bin/auth.sh'
-alias auth2='./bin/auth2.sh'
 
-alias gbi='gcloud beta interactive'
-alias gcsp='gcloud config set project'
-
-alias gac='echo $GOOGLE_APPLICATION_CREDENTIALS'
-alias cgac='cat $GOOGLE_APPLICATION_CREDENTIALS'
-
-alias ggac='export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-accounts/config.json; gac'
-
-alias dgac='export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-accounts/dev-config.json; gac'
-alias tgac='export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-accounts/test-config.json; gac'
-alias sgac='export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-accounts/stage-config.json; gac'
-alias pgac='export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-accounts/prod-config.json; gac'
 
 alias tf='terraform'
 alias tff='terraform fmt'
@@ -171,3 +150,5 @@ if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-clou
 eval "$(starship init zsh)"
 
 export PATH="/usr/local/opt/go@1.16/bin:$PATH"
+export PATH=$PATH:$(go env GOPATH)/bin
+

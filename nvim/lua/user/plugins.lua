@@ -60,7 +60,17 @@ return packer.startup(function(use)
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
   -- use 'kdheepak/lazygit.nvim'
+  --
+  -- icons
+  use 'yamatsum/nvim-nonicons'
 
+  -- if use nvim-web-devicons
+  --use {
+  -- 'yamatsum/nvim-nonicons',
+  -- requires = {'kyazdani42/nvim-web-devicons'}
+  -- }
+  -- Golang plugins
+  use 'ray-x/go.nvim'
 
 --  use {
 --    "cuducos/yaml.nvim",

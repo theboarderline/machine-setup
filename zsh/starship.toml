@@ -21,7 +21,7 @@ default = "unknown shell"
 disabled = true
 
 [git_status]
-disabled = true
+disabled = false
 conflicted = "🏳"
 ahead = "🏎💨"
 behind = "😰"
@@ -49,7 +49,7 @@ style = "green"
 disabled = false
 [kubernetes.context_aliases]
 
-"gke_ignite-walker-project-geb_us-central1-a_primary-cluster" = "walker-ignite"
+"gke_ignite-walker-project-gbt_us-central1-a_primary-cluster" = "walker-ignite"
 
 "gke_o-platform-gke-project_us-central1_central-cluster" = "walker-ops"
 "gke_o-platform-gke-project_us-central1-a_central-cluster" = "walker-ops"
@@ -66,17 +66,25 @@ disabled = false
 "gke_stage-gke-project_us-central1-a_primary-cluster" = "remi-stage"
 "gke_prod-gke-project_us-central1-a_primary-cluster" = "remi-prod"
 
-"gke_o-anthos-gke-project-pqm_us-central1_primary-cluster" = "anthos-ops"
-"gke_d-anthos-gke-project-jem_us-central1_primary-cluster" = "anthos-dev"
-"gke_t-anthos-gke-project-sqz_us-central1_primary-cluster" = "anthos-test"
-"gke_s-anthos-gke-project-knt_us-central1_primary-cluster" = "anthos-stage"
-"gke_p-anthos-gke-project-gej_us-central1_primary-cluster" = "anthos-prod"
+"gke_o-anthos-gke-project-kgp_us-central1_primary-cluster" = "anthos-ops"
+"gke_d-anthos-gke-project-xin_us-central1_primary-cluster" = "anthos-dev"
+"gke_t-anthos-gke-project-vdo_us-central1_primary-cluster" = "anthos-test"
+"gke_s-anthos-gke-project-pgj_us-central1_primary-cluster" = "anthos-stage"
+"gke_p-anthos-gke-project-yje_us-central1_primary-cluster" = "anthos-prod"
 
 "gke_o-argo-gke-project-qss_us-central1_primary-cluster" = "ops-argo"
+"gke_o-argo-gke-project-qss_us-central1-a_primary-cluster" = "ops-argo"
+
 "gke_d-argo-gke-project-dpo_us-central1_primary-cluster" = "dev-argo"
-"gke_t-argo-gke-project-qss_us-central1_primary-cluster" = "test-argo"
+"gke_d-argo-gke-project-dpo_us-central1-a_primary-cluster" = "dev-argo"
+
+"gke_t-argo-gke-project-crf_us-central1_primary-cluster" = "test-argo"
+"gke_t-argo-gke-project-crf_us-central1-a_primary-cluster" = "test-argo"
+
 "gke_s-argo-gke-project-qss_us-central1_primary-cluster" = "stage-argo"
+
 "gke_p-argo-gke-project-qss_us-central1_primary-cluster" = "prod-argo"
+
 
 [golang]
 disabled = true
