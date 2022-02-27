@@ -49,6 +49,8 @@ style = "green"
 disabled = false
 [kubernetes.context_aliases]
 
+"gke_p-vcluster-gke-project_us-central1-a_central-cluster" = "prod-vcluster"
+
 "gke_ignite-walker-project-gbt_us-central1-a_primary-cluster" = "walker-ignite"
 
 "gke_o-platform-gke-project_us-central1_central-cluster" = "walker-ops"
