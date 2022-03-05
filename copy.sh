@@ -29,7 +29,7 @@ pull () {
 
 
     if [[ ! -d $MONOKAI_DIR ]]; then
-      mkdir $MONOKAI_DIR 
+      mkdir -p $MONOKAI_DIR 
     fi
 
     cp ./monokai.lua $MONOKAI_DIR
