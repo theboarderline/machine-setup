@@ -32,6 +32,7 @@ pull () {
       mkdir -p $MONOKAI_DIR 
     fi
 
+    sudo cp ./fonts/* /Library/Fonts
     cp ./monokai.lua $MONOKAI_DIR
 
 }
@@ -84,6 +85,7 @@ elif [[ $1 == "init" ]]; then
     
     sudo cp ./zsh/zsh_completion.d /etc/zsh_completion.d
     sudo cp ./zsh/bash_completion.d /etc/bash_completion.d
+    sudo cp ./fonts/* /Library/Fonts
 
 else
     echo "Usage: ./bin/install.sh <pull | push | init>"
