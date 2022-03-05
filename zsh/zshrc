@@ -1,6 +1,4 @@
 
-alias docker='nerdctl'
-
 alias merge-r='git checkout stage; git pull; git merge main; git push; git checkout test; git pull; git merge stage; git push; git checkout dev; git pull; git merge test; git push; git checkout ops; git pull; git merge dev; git push ; git checkout ops'
 alias merge-a='merge-d; merge-t; merge-s; merge-m'
 
@@ -27,29 +25,25 @@ alias testt='source ./envs/test.sh'
 alias stage='source ./envs/stage.sh'
 alias prod='source ./envs/prod.sh'
 
-alias cdaa='cd ~/Desktop/projects/mw/argocd'
-alias cdbo='cd ~/Desktop/projects/mw/bigo'
-alias cda='cd ~/Desktop/projects/mw/mayo/shared-vpc-anthos'
-alias cdacm='cd ~/Desktop/projects/mw/mayo/acm-factory'
-alias cdz='cd ~/Desktop/projects/mw/spotify-operator'
 
-alias cdm='cd ~/Desktop/clients/mayo/anthos'
-alias cdi='cd ~/Desktop/projects/ignite'
+alias cdt='cd ~/Desktop/projects/terraform-modules'
+alias cdh='cd ~/Desktop/projects/helm-charts'
+alias cde='cd ~/Desktop/projects/machine-setup'
+alias cda='cd ~/Desktop/projects/apps'
 
-alias cdw='cd ~/Desktop/projects/walker'
-alias cdt='cd ~/Desktop/projects/walker/terraform-modules'
-alias cdh='cd ~/Desktop/projects/walker/helm-charts'
-alias cde='cd ~/Desktop/projects/walker/machine-setup'
-alias cdr='cd ~/Desktop/projects/walker/sandbox/rancher-infra'
-alias cdg='cd ~/Desktop/projects/walker/new-repos/platforms/shared-gke-platform'
-alias cdacm='cd ~/Desktop/projects/walker/acm'
-alias cdl='cd ~/Desktop/projects/walker/lakegames'
-alias cdb='cd ~/Desktop/projects/walker/boatload'
-alias cdc='cd ~/Desktop/projects/walker/coleman'
-alias cds='cd ~/Desktop/projects/walker/standwithpaul'
-alias cdd='cd ~/Desktop/projects/walker/dadcoin'
-alias cdp='cd ~/Desktop/projects/walker/paytonpower'
-alias cdf='cd ~/Desktop/projects/walker/finley'
+alias cdg='cd ~/Desktop/projects/platforms/shared-gke-platform'
+
+alias cdl='cd ~/Desktop/projects/apps/tbl/lakegames'
+alias cdb='cd ~/Desktop/projects/apps/tbl/boatload'
+
+alias cdc='cd ~/Desktop/projects/apps/silas/coleman'
+alias cdst='cd ~/Desktop/projects/apps/silas/standwithpaul'
+alias cdsl='cd ~/Desktop/projects/apps/silas/slipperyjo'
+
+alias cdd='cd ~/Desktop/projects/apps/obrien/dadcoin'
+alias cdp='cd ~/Desktop/projects/apps/obrien/paytonpower'
+alias cdf='cd ~/Desktop/projects/apps/obrien/finley'
+
 
 alias ls='ls -aG'
 alias ll='ls -l'
@@ -61,13 +55,12 @@ alias b='byobu'
 alias v='vim .'
 alias nv='nvim .'
 
-alias vimc='nvim ~/.config/nvim'
-
 alias python='python3'
 alias pip='pip3'
 alias rss='python manage.py runserver'
 
 alias ys='yarn start'
+alias yi='yarn ios'
 
 alias env='source env/bin/activate'
 alias deac='deactivate'
@@ -77,11 +70,12 @@ alias sv='source ~/.vimrc'
 alias sb='source ~/.zshrc'
 alias sp='source ~/.profile'
 
+
 alias vimv='nvim ~/.vimrc; source ~/.vimrc'
 alias vimb='nvim ~/.zshrc; source ~/.zshrc'
 alias vimp='nvim ~/.profile; source ~/.profile'
 alias vimz="nvim ~/.config/starship.toml"
-
+alias vimc='nvim ~/.config/nvim'
 
 
 alias tf='terraform'
@@ -96,10 +90,10 @@ alias tfd='terraform destroy'
 
 
 # Kubectl Configurations
-#source <(kubectl completion bash)
-#source <(kubectl completion zsh)
+# source <(kubectl completion bash)
+# source <(kubectl completion zsh)
 #
-#complete -F __start_kubectl k
+# complete -F __start_kubectl k
 
 alias k='kubectl'
 alias kcsc='kubectl config set-context --current --namespace'
@@ -121,7 +115,7 @@ alias kdip='kd computeaddress'
 alias kdz='kd dnsmanagedzone'
 alias kdr='kd dnsrecordset'
 
-alias kga='kg all,ingress'
+alias kga='kg all,ingress,managedcertificate,ciliumnetworkpolicy,externalsecrets'
 alias kgp='kg pods'
 alias kgs='kg svc'
 alias kgn='kg nodes'
