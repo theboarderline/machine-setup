@@ -1,3 +1,4 @@
+export EDITOR=nvim
 
 alias merge-r='git checkout stage; git pull; git merge main; git push; git checkout test; git pull; git merge stage; git push; git checkout dev; git pull; git merge test; git push; git checkout ops; git pull; git merge dev; git push ; git checkout ops'
 alias merge-a='merge-d; merge-t; merge-s; merge-m'
@@ -9,6 +10,9 @@ alias merge-s='git checkout stage; git pull; git merge test; git push; git check
 alias merge-m='git checkout main; git pull; git merge stage; git push; git checkout ops'
 
 alias merge-z='git checkout main; git pull; git merge dev; git push; git checkout dev'
+
+alias merge-tf='git checkout tf-docs; git pull; git merge main; git push; git checkout main'
+alias merge-ft='git checkout main; git pull; git merge tf-docs; git push'
 
 # Common ssh file manipulations
 alias mw='gcloud config set account walker.obrien@mavenwave.com; cp ~/.ssh/id_rsa.mw ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.mw ~/.ssh/id_rsa.pub; cp ~/.terraform.d/credentials.mw.tfrc.json ~/.terraform.d/credentials.tfrc.json'
@@ -97,6 +101,8 @@ alias tfd='terraform destroy'
 
 alias k='kubectl'
 alias kcsc='kubectl config set-context --current --namespace'
+
+alias kgaa='kgp -A | grep nginx-dep; kgp -A | grep api-dep'
 
 alias kg='kubectl get'
 alias kd='kubectl describe'
