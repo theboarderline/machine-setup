@@ -49,7 +49,9 @@ style = "green"
 disabled = false
 [kubernetes.context_aliases]
 
-"gke_ignite-walker-project-gbt_us-central1-a_primary-cluster" = "walker-ignite"
+"gke_ignite-walker-project-gbt_us-central1-a_primary-cluster" = "ignite-walker"
+"gke_ignite-anthos-project-ysb_us-central1-a_primary-cluster" = "ignite-anthos"
+"gke_ignite-vault-project-dpx_us-central1-a_primary-cluster" = "ignite-vault"
 
 "gke_o-platform-gke-project_us-central1_central-cluster" = "walker-ops"
 "gke_o-platform-gke-project_us-central1-a_central-cluster" = "walker-ops"

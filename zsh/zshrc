@@ -1,8 +1,8 @@
 
-alias docker='nerdctl'
-
 alias merge-r='git checkout stage; git pull; git merge main; git push; git checkout test; git pull; git merge stage; git push; git checkout dev; git pull; git merge test; git push; git checkout ops; git pull; git merge dev; git push ; git checkout ops'
 alias merge-a='merge-d; merge-t; merge-s; merge-m'
+
+alias merge-mayo='git checkout develop; git pull; git merge ops; echo "Press enter to continue"; read wait; git push; git checkout ops'
 
 alias merge-o='git checkout ops; git pull; git merge walker; git push; git checkout walker'
 alias merge-d='git checkout dev; git pull; git merge ops; git push; git checkout ops'
@@ -116,6 +116,7 @@ alias kds='kd svc'
 alias kdi='kd ingress'
 alias kdm='kd managedcertificate'
 alias kdc='kd ciliumnetworkpolicy'
+alias kdss='kd secretstore'
 alias kde='kd externalsecrets'
 alias kdip='kd computeaddress'
 alias kdz='kd dnsmanagedzone'
@@ -128,6 +129,7 @@ alias kgn='kg nodes'
 alias kgi='kg ingress'
 alias kgm='kg managedcertificate'
 alias kgc='kg ciliumnetworkpolicy'
+alias kgss='kg secretstore'
 alias kge='kg externalsecrets'
 alias kgip='kg computeaddress'
 alias kgz='kg dnsmanagedzone'
