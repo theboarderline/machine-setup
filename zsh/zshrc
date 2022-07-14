@@ -1,8 +1,9 @@
+export EDITOR=nvim
+
+alias h='hstr'
 
 alias merge-r='git checkout stage; git pull; git merge main; git push; git checkout test; git pull; git merge stage; git push; git checkout dev; git pull; git merge test; git push; git checkout ops; git pull; git merge dev; git push ; git checkout ops'
 alias merge-a='merge-d; merge-t; merge-s; merge-m'
-
-alias merge-mayo='git checkout develop; git pull; git merge ops; echo "Press enter to continue"; read wait; git push; git checkout ops'
 
 alias merge-o='git checkout ops; git pull; git merge walker; git push; git checkout walker'
 alias merge-d='git checkout dev; git pull; git merge ops; git push; git checkout ops'
@@ -12,42 +13,42 @@ alias merge-m='git checkout main; git pull; git merge stage; git push; git check
 
 alias merge-z='git checkout main; git pull; git merge dev; git push; git checkout dev'
 
-# Common ssh file manipulations
-alias mw='gcloud config set account walker.obrien@mavenwave.com; cp ~/.ssh/id_rsa.mw ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.mw ~/.ssh/id_rsa.pub; cp ~/.terraform.d/credentials.mw.tfrc.json ~/.terraform.d/credentials.tfrc.json'
+alias merge-tf='git checkout tf-docs; git pull; git merge main; git push; git checkout main'
+alias merge-ft='git checkout main; git pull; git merge tf-docs; git push'
 
-alias wob='gcloud config set account wnobrien@lakegames.us; cp ~/.ssh/id_rsa.wob ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.wob ~/.ssh/id_rsa.pub; cp ~/.terraform.d/credentials.wob.tfrc.json ~/.terraform.d/credentials.tfrc.json'
+# Ssh file manipulations
+alias mw='gcloud config set account walker.obrien@mavenwave.com; cp ~/.ssh/id_rsa.mw ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.mw ~/.ssh/id_rsa.pub'
+alias wob='gcloud config set account wnobrien@lakegames.us; cp ~/.ssh/id_rsa.wob ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.wob ~/.ssh/id_rsa.pub'
 
 alias getpub='cat ~/.ssh/id_rsa.pub'
 
 # for x in `docker images | awk '{print $3}'`; do docker image rm $x --force ; done
-alias ss='source ./envs/env.sh'
-alias ops='source ./envs/ops.sh'
-alias dev='source ./envs/dev.sh'
-alias testt='source ./envs/test.sh'
-alias stage='source ./envs/stage.sh'
-alias prod='source ./envs/prod.sh'
+alias ss='source ./bin/env.sh'
+alias ops='source ./bin/env.sh ops'
+alias dev='source ./bin/env.sh dev'
+alias testt='source ./bin/env.sh test'
+alias stage='source ./bin/env.sh stage'
+alias prod='source ./bin/env.sh prod'
 
-alias cdaa='cd ~/Desktop/projects/mw/platforms/argo'
-alias cda='cd ~/Desktop/projects/mw/platforms/anthos'
-alias cdz='cd ~/Desktop/projects/mw/spotify-operator'
 
-alias cdm='cd ~/Desktop/projects/mw/mayo'
-alias cdi='cd ~/Desktop/projects/mw/ignite'
+alias cdt='cd ~/Desktop/projects/terraform-modules'
+alias cdh='cd ~/Desktop/projects/helm-charts'
+alias cde='cd ~/Desktop/projects/machine-setup'
+alias cda='cd ~/Desktop/projects/apps'
 
-alias cdw='cd ~/Desktop/projects/walker'
-alias cdt='cd ~/Desktop/projects/walker/terraform-modules'
-alias cdh='cd ~/Desktop/projects/walker/helm-charts'
-alias cde='cd ~/Desktop/projects/walker/machine-setup'
-alias cdr='cd ~/Desktop/projects/walker/sandbox/rancher-infra'
-alias cdg='cd ~/Desktop/projects/walker/new-repos/platforms/shared-gke-platform'
-alias cdacm='cd ~/Desktop/projects/walker/acm'
-alias cdl='cd ~/Desktop/projects/walker/lakegames'
-alias cdb='cd ~/Desktop/projects/walker/boatload'
-alias cdc='cd ~/Desktop/projects/walker/coleman'
-alias cds='cd ~/Desktop/projects/walker/standwithpaul'
-alias cdd='cd ~/Desktop/projects/walker/dadcoin'
-alias cdp='cd ~/Desktop/projects/walker/paytonpower'
-alias cdf='cd ~/Desktop/projects/walker/finley'
+alias cdg='cd ~/Desktop/projects/platforms/shared-gke-platform'
+
+alias cdl='cd ~/Desktop/projects/apps/tbl/lakegames'
+alias cdb='cd ~/Desktop/projects/apps/tbl/boatload'
+
+alias cdc='cd ~/Desktop/projects/apps/silas/coleman'
+alias cdst='cd ~/Desktop/projects/apps/silas/standwithpaul'
+alias cdsl='cd ~/Desktop/projects/apps/silas/slipperyjo'
+
+alias cdd='cd ~/Desktop/projects/apps/obrien/dadcoin'
+alias cdp='cd ~/Desktop/projects/apps/obrien/paytonpower'
+alias cdf='cd ~/Desktop/projects/apps/obrien/finley'
+
 
 alias ls='ls -aG'
 alias ll='ls -l'
@@ -59,13 +60,11 @@ alias b='byobu'
 alias v='vim .'
 alias nv='nvim .'
 
-alias vimc='nvim ~/.config/nvim'
-
-alias python='python3'
 alias pip='pip3'
 alias rss='python manage.py runserver'
 
 alias ys='yarn start'
+alias yi='yarn ios'
 
 alias env='source env/bin/activate'
 alias deac='deactivate'
@@ -75,11 +74,12 @@ alias sv='source ~/.vimrc'
 alias sb='source ~/.zshrc'
 alias sp='source ~/.profile'
 
+
 alias vimv='nvim ~/.vimrc; source ~/.vimrc'
 alias vimb='nvim ~/.zshrc; source ~/.zshrc'
 alias vimp='nvim ~/.profile; source ~/.profile'
 alias vimz="nvim ~/.config/starship.toml"
-
+alias vimc='nvim ~/.config/nvim'
 
 
 alias tf='terraform'
@@ -94,13 +94,15 @@ alias tfd='terraform destroy'
 
 
 # Kubectl Configurations
-#source <(kubectl completion bash)
-#source <(kubectl completion zsh)
+# source <(kubectl completion bash)
+# source <(kubectl completion zsh)
 #
-#complete -F __start_kubectl k
+# complete -F __start_kubectl k
 
 alias k='kubectl'
 alias kcsc='kubectl config set-context --current --namespace'
+
+alias kgaa='kgp -A | grep nginx-dep; kgp -A | grep api-dep'
 
 alias kg='kubectl get'
 alias kd='kubectl describe'
@@ -114,20 +116,18 @@ alias kds='kd svc'
 alias kdi='kd ingress'
 alias kdm='kd managedcertificate'
 alias kdc='kd ciliumnetworkpolicy'
-alias kdss='kd secretstore'
 alias kde='kd externalsecrets'
 alias kdip='kd computeaddress'
 alias kdz='kd dnsmanagedzone'
 alias kdr='kd dnsrecordset'
 
-alias kga='kg all,ingress'
+alias kga='kg all,ingress,managedcertificate,cloudbuildtrigger,computeaddress,dnsrecordset,storagebucket,artifactregistryrepository'
 alias kgp='kg pods'
 alias kgs='kg svc'
 alias kgn='kg nodes'
 alias kgi='kg ingress'
 alias kgm='kg managedcertificate'
 alias kgc='kg ciliumnetworkpolicy'
-alias kgss='kg secretstore'
 alias kge='kg externalsecrets'
 alias kgip='kg computeaddress'
 alias kgz='kg dnsmanagedzone'
@@ -152,3 +152,9 @@ eval "$(starship init zsh)"
 export PATH="/usr/local/opt/go@1.16/bin:$PATH"
 export PATH=$PATH:$(go env GOPATH)/bin
 
+source ~/.iterm2_shell_integration.zsh
+
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/walkerobrien/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

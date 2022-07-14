@@ -3,6 +3,7 @@ set -o vi
 source ~/.zshrc
 
 export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:/Users/walkerobrien/.linkerd2/bin
 
 
 
