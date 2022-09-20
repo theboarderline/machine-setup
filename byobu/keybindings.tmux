@@ -1,7 +1,5 @@
-unbind-key -n C-a 
-set -g prefix ^A
-#set -g prefix2 F12
-bind a send-prefix
+unbind-key -n C-a
+set -g prefix2 F12
 
 unbind-key -n C-r
 unbind-key -n C-e
@@ -38,3 +36,8 @@ bind p paste-buffer
 bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
 bind-key -T copy-mode-vi 'y' send-keys -X copy-selection-and-cancel
 
+unbind-key -n C-s
+unbind-key -n C-a
+set -g prefix ^A
+set -g prefix2 F12
+bind a send-prefix

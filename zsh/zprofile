@@ -1,0 +1,9 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+set -o vi
+
+export PATH='/usr/local/bin:/usr/bin:/usr/sbin:/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/walkerobrien/Desktop/projects/misc/fabric-samples/bin'
+
+source ~/.zshrc
+
+

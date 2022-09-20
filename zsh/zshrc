@@ -31,6 +31,9 @@ alias stage='source ./bin/env.sh stage'
 alias prod='source ./bin/env.sh prod'
 
 
+alias cdw='cd ~/Desktop/projects/walker'
+alias cdm='cd ~/Desktop/projects/mw'
+
 alias cdt='cd ~/Desktop/projects/terraform-modules'
 alias cdh='cd ~/Desktop/projects/helm-charts'
 alias cde='cd ~/Desktop/projects/machine-setup'
@@ -72,12 +75,12 @@ alias cmod='chmod +x ./bin/*'
 
 alias sv='source ~/.vimrc'
 alias sb='source ~/.zshrc'
-alias sp='source ~/.profile'
+alias sp='source ~/.zprofile'
 
 
 alias vimv='nvim ~/.vimrc; source ~/.vimrc'
 alias vimb='nvim ~/.zshrc; source ~/.zshrc'
-alias vimp='nvim ~/.profile; source ~/.profile'
+alias vimp='nvim ~/.zprofile; source ~/.zprofile'
 alias vimz="nvim ~/.config/starship.toml"
 alias vimc='nvim ~/.config/nvim'
 
@@ -154,7 +157,10 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 source ~/.iterm2_shell_integration.zsh
 
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/walkerobrien/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+

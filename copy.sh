@@ -13,10 +13,10 @@ pull () {
     source ~/.vimrc
 
     cp ./zsh/zshrc ~/.zshrc
-    cp ./zsh/profile ~/.profile
+    cp ./zsh/zprofile ~/.zprofile
     cp ./zsh/starship.toml ~/.config/starship.toml
 
-    source ~/.profile
+    source ~/.zprofile
 
     cp ./byobu/bin/* ~/.byobu/bin
     cp ./byobu/.tmux.conf ~/.byobu
@@ -41,7 +41,7 @@ push () {
     cp ~/.vimrc ./vim/vimrc
     cp ~/.vim/colors/sublimemonokai.vim ./vim/colors/sublimemonokai.vim
 
-    cp ~/.profile ./zsh/profile
+    cp ~/.zprofile ./zsh/zprofile
     cp ~/.zshrc ./zsh/zshrc
     cp ~/.config/starship.toml ./zsh/starship.toml
 
