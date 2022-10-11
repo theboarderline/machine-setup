@@ -48,7 +48,7 @@
 
 # Unit used for network throughput (either bits per second or bytes per second)
 # Default: bits
-NETWORK_UNITS=bytes
+#NETWORK_UNITS=bytes
 
 # Minimum network throughput that triggers the notification (in kbit/s)
 # Default: 20
@@ -75,4 +75,4 @@ NETWORK_UNITS=bytes
 
 # Set this to zero to hide seconds int the time display
 # Default 1
-TIME_SECONDS=0
+#TIME_SECONDS=0

@@ -1,4 +1,5 @@
-export EDITOR=nvim
+#export EDITOR=nvim
+export EDITOR=vim
 
 alias h='hstr'
 
@@ -17,7 +18,7 @@ alias merge-tf='git checkout tf-docs; git pull; git merge main; git push; git ch
 alias merge-ft='git checkout main; git pull; git merge tf-docs; git push'
 
 # Ssh file manipulations
-alias mw='gcloud config set account walker.obrien@mavenwave.com; cp ~/.ssh/id_rsa.mw ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.mw ~/.ssh/id_rsa.pub'
+alias pixo='gcloud config set account walker.obrien@pixovr.com; cp ~/.ssh/id_rsa.pixo ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.pixo ~/.ssh/id_rsa.pub'
 alias wob='gcloud config set account wnobrien@lakegames.us; cp ~/.ssh/id_rsa.wob ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.wob ~/.ssh/id_rsa.pub'
 
 alias getpub='cat ~/.ssh/id_rsa.pub'
@@ -78,11 +79,17 @@ alias sb='source ~/.zshrc'
 alias sp='source ~/.zprofile'
 
 
-alias vimv='nvim ~/.vimrc; source ~/.vimrc'
-alias vimb='nvim ~/.zshrc; source ~/.zshrc'
-alias vimp='nvim ~/.zprofile; source ~/.zprofile'
-alias vimz="nvim ~/.config/starship.toml"
-alias vimc='nvim ~/.config/nvim'
+alias vimv='vim ~/.vimrc; source ~/.vimrc'
+alias vimb='vim ~/.zshrc; source ~/.zshrc'
+alias vimp='vim ~/.zprofile; source ~/.zprofile'
+alias vimz="vim ~/.config/starship.toml"
+alias vimc='vim ~/.config/nvim'
+
+# alias vimv='nvim ~/.vimrc; source ~/.vimrc'
+# alias vimb='nvim ~/.zshrc; source ~/.zshrc'
+# alias vimp='nvim ~/.zprofile; source ~/.zprofile'
+# alias vimz="nvim ~/.config/starship.toml"
+# alias vimc='nvim ~/.config/nvim'
 
 
 alias tf='terraform'
@@ -144,12 +151,6 @@ alias gaa='git add -A'
 alias gc='git commit -m'
 alias gpp='git fetch; git pull; git push'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
-
 eval "$(starship init zsh)"
 
 export PATH="/usr/local/opt/go@1.16/bin:$PATH"
@@ -164,3 +165,9 @@ export PATH="/Users/walkerobrien/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc'; fi
