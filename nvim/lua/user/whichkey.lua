@@ -96,6 +96,28 @@ local mappings = {
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
+  d = {
+    name = "Debugger",
+    d = { "<cmd>DapContinue<cr>", "Run/Continue" },
+    b = { "<cmd>DapToggleBreakpoint<cr>", "Toggle Breakpoint" },
+    o = { "<cmd>DapStepOver<cr>", "Step Over" },
+    i = { "<cmd>DapStepInto<cr>", "Step Into" },
+    I = { "<cmd>DapStepOut<cr>", "Step Out" },
+    t = { "<cmd>DapTerminate<cr>", "Terminate" },
+    l = { "<cmd>DapToggleRepl<cr>", "Logs" },
+    L = { "<cmd>DapShowLog<cr>", "DAP Logs" },
+    w = { "<cmd>lua require('dap.ui.widgets').sidebar(widgets.frames).open()<cr>", "Widget" },
+  },
+
+  x = {
+    name = "Trouble",
+    x = { "<cmd>TroubleToggle<cr>", "Toggle" },
+    w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics" },
+    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics" },
+    q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
+    l = { "<cmd>TroubleToggle loclist<cr>", "Loclist" },
+  },
+
   p = {
     name = "Packer",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -139,7 +161,7 @@ local mappings = {
       "<cmd>Telescope lsp_workspace_diagnostics<cr>",
       "Workspace Diagnostics",
     },
-    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+    f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     j = {

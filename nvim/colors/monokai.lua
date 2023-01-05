@@ -4,7 +4,6 @@ local M = {}
 
 M.classic = {
   name = 'monokai',
-  base0 = '#222426',
   base1 = '#272a30',
   base2 = '#26292C',
   base3 = '#2E323C',
@@ -12,7 +11,6 @@ M.classic = {
   base5 = '#4d5154',
   base6 = '#9ca0a4',
   base7 = '#b1b1b1',
-  base8 = '#e3e3e1',
   border = '#a1b5b1',
   brown = '#504945',
   white = '#f8f8f0',
@@ -33,7 +31,6 @@ M.classic = {
 
 M.pro = {
   name = 'monokai_pro',
-  base0 = '#222426',
   base1 = '#211F22',
   base2 = '#26292C',
   base3 = '#2E323C',
@@ -41,7 +38,6 @@ M.pro = {
   base5 = '#4d5154',
   base6 = '#72696A',
   base7 = '#B1B1B1',
-  base8 = '#e3e3e1',
   border = '#A1B5B1',
   brown = '#504945',
   white = '#FFF1F3',
@@ -62,7 +58,6 @@ M.pro = {
 
 M.soda = {
   name = 'monokai_soda',
-  base0 = '#222426',
   base1 = '#211F22',
   base2 = '#26292C',
   base3 = '#2E323C',
@@ -70,7 +65,6 @@ M.soda = {
   base5 = '#4d5154',
   base6 = '#72696A',
   base7 = '#B1B1B1',
-  base8 = '#e3e3e1',
   border = '#A1B5B1',
   brown = '#504945',
   white = '#f6f6ec',
@@ -79,7 +73,7 @@ M.soda = {
   pink = '#f3005f',
   green = '#97e023',
   aqua = '#78DCE8',
-  yellow = '#dfd561',
+  yellow = ' #dfd561',
   orange = '#fa8419',
   purple = '#9c64fe',
   red = '#f3005f',
@@ -89,53 +83,14 @@ M.soda = {
   diff_text = '#23324d',
 }
 
-M.ristretto = {
-  name = 'monokai_ristretto',
-  base0 = '#191515',
-  base1 = '#211c1c',
-  base2 = '#2c2525',
-  base3 = '#403838',
-  base4 = '#5b5353',
-  base5 = '#72696a',
-  base6 = '#8c8384',
-  base7 = '#c3b7b8',
-  base8 = '#fff1f3',
-  border = '#A1B5B1',
-  brown = '#352e2e',
-  white = '#fff1f3',
-  grey = '#72696a',
-  black = '#000000',
-  pink = '#FF6188',
-  green = '#adda78',
-  aqua = '#85dacc',
-  yellow = '#f9cc6c',
-  orange = '#f38d70',
-  purple = '#a8a9eb',
-  red = '#fd6883',
-  diff_add = '#527728',
-  diff_remove = '#842335',
-  diff_change = '#247c6e',
-  diff_text = '#23324d',
-}
-
-local function remove_italics(config, colors)
-  if not config.italics and colors.style == 'italic' then
-    colors.style = nil
-  end
-  return colors
-end
-
-local function highlighter(config)
-  return function(group, color)
-    color = remove_italics(config, color)
-    local style = color.style and 'gui=' .. color.style or 'gui=NONE'
-    local fg = color.fg and 'guifg = ' .. color.fg or 'guifg = NONE'
-    local bg = color.bg and 'guibg = ' .. color.bg or 'guibg = NONE'
-    local sp = color.sp and 'guisp = ' .. color.sp or ''
+M.highlight = function(group, color)
+  local style = color.style and 'gui=' .. color.style or 'gui=NONE'
+  local fg = color.fg and 'guifg = ' .. color.fg or 'guifg = NONE'
+  local bg = color.bg and 'guibg = ' .. color.bg or 'guibg = NONE'
+  local sp = color.sp and 'guisp = ' .. color.sp or ''
   vim.cmd(
     'highlight ' .. group .. ' ' .. style .. ' ' .. fg .. ' ' .. bg .. ' ' .. sp
   )
-  end
 end
 
 M.load_syntax = function(palette)
@@ -175,7 +130,7 @@ M.load_syntax = function(palette)
     CursorLine = {
       bg = palette.base3,
     },
-    NonText = { -- used for "eol", "extends" and "precedes" in listchars
+    NonText = {
       fg = palette.base5,
     },
     Visual = {
@@ -190,7 +145,7 @@ M.load_syntax = function(palette)
     },
     IncSearch = {
       fg = palette.base2,
-      bg = palette.orange,
+      bg = palette.yellow,
     },
     CursorLineNr = {
       fg = palette.orange,
@@ -295,7 +250,7 @@ M.load_syntax = function(palette)
       bg = palette.black,
     },
     Constant = {
-      fg = palette.aqua,
+      fg = palette.purple,
     },
     Number = {
       fg = palette.purple,
@@ -324,8 +279,11 @@ M.load_syntax = function(palette)
     Typedef = {
       fg = palette.aqua,
     },
+    yamlPlainScalar = {
+      fg = palette.yellow,
+    },
     Identifier = {
-      fg = palette.white,
+      fg = palette.red,
     },
     Function = {
       fg = palette.green,
@@ -414,8 +372,8 @@ M.load_syntax = function(palette)
     CursorColumn = {
       bg = palette.base3,
     },
-    Whitespace = { -- used for "nbsp", "space", "tab" and "trail" in listchars
-      fg = palette.base5,
+    Whitespace = {
+      fg = palette.base3,
     },
     WildMenu = {
       fg = palette.white,
@@ -473,9 +431,6 @@ M.load_plugin_syntax = function(palette)
     },
     TSConstMacro = {
       fg = palette.purple,
-    },
-    TSConstructor = {
-      fg = palette.aqua,
     },
     TSConditional = {
       fg = palette.pink,
@@ -632,74 +587,18 @@ M.load_plugin_syntax = function(palette)
       fg = palette.white,
       style = 'NONE',
     },
-
-    -- Telescope
     TelescopeBorder = {
-      fg = palette.base7,
+      fg = palette.border,
     },
-    TelescopeNormal = {
-      fg = palette.base8,
-      bg = palette.base0,
+    TelescopePromptBorder = {
+      fg = palette.border,
     },
-    TelescopeSelection = {
-      fg = palette.white,
-      style = 'bold',
-    },
-    TelescopeSelectionCaret = {
-      fg = palette.green,
-    },
-    TelescopeMultiSelection = {
-      fg = palette.pink,
-    },
-    TelescopeMatching = {
-      fg = palette.aqua,
-    },
-
-    -- hrsh7th/nvim-cmp
-    CmpDocumentation = { fg = palette.white, bg = palette.base1 },
-    CmpDocumentationBorder = { fg = palette.white, bg = palette.base1 },
-
-    CmpItemAbbr = { fg = palette.white },
-    CmpItemAbbrMatch = { fg = palette.aqua },
-    CmpItemAbbrMatchFuzzy = { fg = palette.aqua },
-
-    CmpItemKindDefault = { fg = palette.white },
-    CmpItemMenu = { fg = palette.base6 },
-
-    CmpItemKindKeyword = { fg = palette.pink },
-    CmpItemKindVariable = { fg = palette.pink },
-    CmpItemKindConstant = { fg = palette.pink },
-    CmpItemKindReference = { fg = palette.pink },
-    CmpItemKindValue = { fg = palette.pink },
-
-    CmpItemKindFunction = { fg = palette.aqua },
-    CmpItemKindMethod = { fg = palette.aqua },
-    CmpItemKindConstructor = { fg = palette.aqua },
-
-    CmpItemKindClass = { fg = palette.orange },
-    CmpItemKindInterface = { fg = palette.orange },
-    CmpItemKindStruct = { fg = palette.orange },
-    CmpItemKindEvent = { fg = palette.orange },
-    CmpItemKindEnum = { fg = palette.orange },
-    CmpItemKindUnit = { fg = palette.orange },
-
-    CmpItemKindModule = { fg = palette.yellow },
-
-    CmpItemKindProperty = { fg = palette.green },
-    CmpItemKindField = { fg = palette.green },
-    CmpItemKindTypeParameter = { fg = palette.green },
-    CmpItemKindEnumMember = { fg = palette.green },
-    CmpItemKindOperator = { fg = palette.green },
-
-    -- ray-x/lsp_signature.nvim
-    LspSignatureActiveParameter = { fg = palette.orange },
   }
 end
 
 local default_config = {
   palette = M.classic,
   custom_hlgroups = {},
-  italics = true,
 }
 
 M.setup = function(config)
@@ -715,19 +614,23 @@ M.setup = function(config)
   vim.g.colors_name = used_palette.name
   local syntax = M.load_syntax(used_palette)
   syntax = vim.tbl_deep_extend('keep', config.custom_hlgroups, syntax)
-  local highlight = highlighter(config)
   for group, colors in pairs(syntax) do
-    highlight(group, colors)
+    M.highlight(group, colors)
   end
-  local plugin_syntax = M.load_plugin_syntax(used_palette)
-  plugin_syntax = vim.tbl_deep_extend(
-    'keep',
-    config.custom_hlgroups,
-    plugin_syntax
-  )
-  for group, colors in pairs(plugin_syntax) do
-    highlight(group, colors)
-  end
+  local async_load_plugin = nil
+  async_load_plugin = vim.loop.new_async(vim.schedule_wrap(function()
+    local plugin_syntax = M.load_plugin_syntax(used_palette)
+    plugin_syntax = vim.tbl_deep_extend(
+      'keep',
+      config.custom_hlgroups,
+      plugin_syntax
+    )
+    for group, colors in pairs(plugin_syntax) do
+      M.highlight(group, colors)
+    end
+    async_load_plugin:close()
+  end))
+  async_load_plugin:send()
 end
 
 return M

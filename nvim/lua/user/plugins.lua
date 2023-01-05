@@ -47,7 +47,6 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim" -- Easily comment stuff
-  use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
   use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
@@ -59,30 +58,26 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
-  -- use 'kdheepak/lazygit.nvim'
   --
+
   -- icons
+  use "kyazdani42/nvim-web-devicons"
   use 'yamatsum/nvim-nonicons'
 
-  -- if use nvim-web-devicons
-  --use {
-  -- 'yamatsum/nvim-nonicons',
-  -- requires = {'kyazdani42/nvim-web-devicons'}
-  -- }
   -- Golang plugins
   use 'ray-x/go.nvim'
 
---  use {
---    "cuducos/yaml.nvim",
---    ft = {"yaml"}, -- optional
---    requires = {
---      "nvim-treesitter/nvim-treesitter",
---      "nvim-telescope/telescope.nvim" -- optional
---    },
---    config = function ()
---      require("yaml_nvim").init()
---    end,
---  }
+  use {
+    "cuducos/yaml.nvim",
+    ft = {"yaml"}, -- optional
+    requires = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim" -- optional
+    },
+    config = function ()
+      require("yaml_nvim").init()
+    end,
+  }
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -107,9 +102,21 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use 'nanotee/nvim-lsp-basics'
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
+  use {
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
 
   -- Treesitter
   use {
@@ -122,6 +129,12 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+  use "kdheepak/lazygit.nvim"
+  use "akinsho/git-conflict.nvim"
+  use "pwntester/octo.nvim"
+
+  -- Debug
+  use 'mfussenegger/nvim-dap'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

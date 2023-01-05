@@ -49,6 +49,22 @@ style = "green"
 disabled = false
 [kubernetes.context_aliases]
 
+"gke_prod-pixo-shared-gke-project_us-central1_us-central1-cluster" = "prod-shared-central"
+"gke_prod-pixo-shared-gke-project_us-east4_us-east4-cluster" = "prod-shared-east"
+
+"gke_stage-pixo-shared-gke-project_us-central1_us-central1-cluster" = "stage-shared-central"
+"gke_stage-pixo-shared-gke-project_us-east4_us-east4-cluster" = "stage-shared-east"
+
+"gke_dev-pixo-shared-gke-project_us-central1_us-central1-cluster" = "dev-shared-central"
+"gke_dev-pixo-shared-gke-project_us-east4_us-east4-cluster" = "dev-shared-east"
+
+
+"gke_walker-pixo-init-project_us-central1-a_central-cluster" = "pixo-walker-sandbox"
+
+"gke_pixo-gke_us-central1_central-cluster" = "pixo-cpl-cluster"
+"gke_pixo-gke_us-central1_dev-cluster" = "dev-apex-cluster"
+"gke_pixo-gke_us-central1_prod-cluster" = "prod-apex-cluster"
+
 "gke_ignite-walker-project-gbt_us-central1-a_primary-cluster" = "walker-ignite"
 
 "gke_o-platform-gke-project_us-central1_central-cluster" = "walker-ops"

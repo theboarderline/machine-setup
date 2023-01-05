@@ -1,21 +1,5 @@
-#export EDITOR=nvim
-export EDITOR=vim
 
 alias h='hstr'
-
-alias merge-r='git checkout stage; git pull; git merge main; git push; git checkout test; git pull; git merge stage; git push; git checkout dev; git pull; git merge test; git push; git checkout ops; git pull; git merge dev; git push ; git checkout ops'
-alias merge-a='merge-d; merge-t; merge-s; merge-m'
-
-alias merge-o='git checkout ops; git pull; git merge walker; git push; git checkout walker'
-alias merge-d='git checkout dev; git pull; git merge ops; git push; git checkout ops'
-alias merge-t='git checkout test; git pull; git merge dev; git push; git checkout ops'
-alias merge-s='git checkout stage; git pull; git merge test; git push; git checkout ops'
-alias merge-m='git checkout main; git pull; git merge stage; git push; git checkout ops'
-
-alias merge-z='git checkout main; git pull; git merge dev; git push; git checkout dev'
-
-alias merge-tf='git checkout tf-docs; git pull; git merge main; git push; git checkout main'
-alias merge-ft='git checkout main; git pull; git merge tf-docs; git push'
 
 # Ssh file manipulations
 alias pixo='gcloud config set account walker.obrien@pixovr.com; cp ~/.ssh/id_rsa.pixo ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.pixo ~/.ssh/id_rsa.pub'
@@ -25,37 +9,13 @@ alias getpub='cat ~/.ssh/id_rsa.pub'
 
 # for x in `docker images | awk '{print $3}'`; do docker image rm $x --force ; done
 alias ss='source ./bin/env.sh'
-alias ops='source ./bin/env.sh ops'
-alias dev='source ./bin/env.sh dev'
-alias testt='source ./bin/env.sh test'
-alias stage='source ./bin/env.sh stage'
-alias prod='source ./bin/env.sh prod'
-
-
-alias cdw='cd ~/Desktop/projects/walker'
-alias cdm='cd ~/Desktop/projects/mw'
-
-alias cdt='cd ~/Desktop/projects/terraform-modules'
-alias cdh='cd ~/Desktop/projects/helm-charts'
-alias cde='cd ~/Desktop/projects/machine-setup'
-alias cda='cd ~/Desktop/projects/apps'
-
-alias cdg='cd ~/Desktop/projects/platforms/shared-gke-platform'
-
-alias cdl='cd ~/Desktop/projects/apps/tbl/lakegames'
-alias cdb='cd ~/Desktop/projects/apps/tbl/boatload'
-
-alias cdc='cd ~/Desktop/projects/apps/silas/coleman'
-alias cdst='cd ~/Desktop/projects/apps/silas/standwithpaul'
-alias cdsl='cd ~/Desktop/projects/apps/silas/slipperyjo'
-
-alias cdd='cd ~/Desktop/projects/apps/obrien/dadcoin'
-alias cdp='cd ~/Desktop/projects/apps/obrien/paytonpower'
-alias cdf='cd ~/Desktop/projects/apps/obrien/finley'
-
 
 alias ls='ls -aG'
-alias ll='ls -l'
+alias lss='ls -alhSG'
+# alias ll='llama'
+function ll {
+  cd "$(llama "$@")"
+}
 
 alias l='clear'
 
@@ -64,7 +24,10 @@ alias b='byobu'
 alias v='vim .'
 alias nv='nvim .'
 
+alias postgresql='postgresql@14'
+
 alias pip='pip3'
+alias python='python3'
 alias rss='python manage.py runserver'
 
 alias ys='yarn start'
@@ -79,35 +42,18 @@ alias sb='source ~/.zshrc'
 alias sp='source ~/.zprofile'
 
 
-alias vimv='vim ~/.vimrc; source ~/.vimrc'
-alias vimb='vim ~/.zshrc; source ~/.zshrc'
-alias vimp='vim ~/.zprofile; source ~/.zprofile'
-alias vimz="vim ~/.config/starship.toml"
-alias vimc='vim ~/.config/nvim'
-
-# alias vimv='nvim ~/.vimrc; source ~/.vimrc'
-# alias vimb='nvim ~/.zshrc; source ~/.zshrc'
-# alias vimp='nvim ~/.zprofile; source ~/.zprofile'
-# alias vimz="nvim ~/.config/starship.toml"
-# alias vimc='nvim ~/.config/nvim'
+alias vimv='nvim ~/.vimrc; source ~/.vimrc'
+alias vimb='nvim ~/.zshrc; source ~/.zshrc'
+alias vimp='nvim ~/.zprofile; source ~/.zprofile'
+alias vimz="nvim ~/.config/starship.toml"
+alias vimc='nvim ~/.config/nvim'
 
 
 alias tf='terraform'
 alias tff='terraform fmt'
 alias tfi='terraform init'
 alias tfv='terraform validate'
-alias tfp='terraform plan'
-alias tfa='terraform apply'
-alias tfaa='terraform apply -auto-approve'
-alias tfd='terraform destroy'
 
-
-
-# Kubectl Configurations
-# source <(kubectl completion bash)
-# source <(kubectl completion zsh)
-#
-# complete -F __start_kubectl k
 
 alias k='kubectl'
 alias kcsc='kubectl config set-context --current --namespace'
@@ -151,12 +97,23 @@ alias gaa='git add -A'
 alias gc='git commit -m'
 alias gpp='git fetch; git pull; git push'
 
+
+# Kubectl Configurations
+source <(kubectl completion bash)
+source <(kubectl completion zsh)
+
+complete -F __start_kubectl k
+
+source ~/.iterm2_shell_integration.zsh
+
+autoload -Uz compinit
+compinit
+
 eval "$(starship init zsh)"
 
 export PATH="/usr/local/opt/go@1.16/bin:$PATH"
 export PATH=$PATH:$(go env GOPATH)/bin
 
-source ~/.iterm2_shell_integration.zsh
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
@@ -171,3 +128,5 @@ if [ -f '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/wa
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc'; fi
+
+
