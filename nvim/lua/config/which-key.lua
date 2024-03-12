@@ -96,9 +96,11 @@ wk.setup {
       C = { "<cmd>ToggleTerm size=15 direction=horizontal<cr><cmd>TermExec cmd='clear && make coverage'<cr>", "Tests with Coverage Threshold", mode = { "n", "v" } },
       c = { "<cmd>GoCoverage<cr>", "Tests with Coverage", mode = { "n", "v" } },
       f = { "<cmd>GoTest -f<cr>", "Test File", mode = { "n", "v" } },
+      g = { "<cmd>GoGet<cr>", "Go Get", mode = { "n", "v" } },
       l = { "<cmd>GoLint<cr>", "Linter", mode = { "n", "v" } },
       p = { "<cmd>GoTestPkg<cr>", "Test Package", mode = { "n", "v" } },
       r = { "<cmd>GoRename<cr>", "Rename", mode = { "n", "v" } },
+      R = { "<cmd>ToggleTerm size=15 direction=horizontal<cr><cmd>TermExec cmd='clear && make run'<cr>", "Make Run", mode = { "n", "v" } },
       t = { "<cmd>GoTest<cr>", "Test All", mode = { "n", "v" } },
     },
 

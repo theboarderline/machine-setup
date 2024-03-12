@@ -29,7 +29,7 @@ pull () {
 
 
     if [[ ! -d $MONOKAI_DIR ]]; then
-      mkdir -p $MONOKAI_DIR 
+      mkdir -p $MONOKAI_DIR
     fi
 
     sudo cp ./fonts/* /Library/Fonts
@@ -78,11 +78,11 @@ elif [[ $1 == "push" ]]; then
 
 elif [[ $1 == "init" ]]; then
     pull
-    
+
     brew install starship
     brew install byobu
     brew install nvim
-    
+
     sudo cp ./zsh/zsh_completion.d /etc/zsh_completion.d
     sudo cp ./zsh/bash_completion.d /etc/bash_completion.d
     sudo cp ./fonts/* /Library/Fonts
