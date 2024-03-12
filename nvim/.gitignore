@@ -1,43 +1,6 @@
-# Compiled Lua sources
-luac.out
-
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
-
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
+tags
+en.utf-8.add.spl
 *.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-
-plugin/packer_compiled.lua
+.netrwhist
+*.log
+.DS_Store
