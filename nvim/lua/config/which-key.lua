@@ -62,36 +62,45 @@ wk.setup {
   },
 
   wk.register({
+
     g = {
       name = "Git",
       g = { "<cmd>LazyGit<cr>", "Lazy Git", mode = { "n", "v" } },
     },
+
     f = {
       name = "Search",
-      f = { "<cmd>Telescope find_files<cr>", "Files", mode = { "n", "v" } },
       b = { "<cmd>Telescope buffers<cr>", "Buffers", mode = { "n", "v" } },
-      o = { "<cmd>Telescope oldfiles<cr>", "Recent Files", mode = { "n", "v" } },
       c = { "<cmd>Telescope commands<cr>", "Commands", mode = { "n", "v" } },
-      m = { "<cmd>Telescope man_pages<cr>", "Man Pages", mode = { "n", "v" } },
-      r = { "<cmd>Telescope registers<cr>", "Registers", mode = { "n", "v" } },
-      z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy in Buffer", mode = { "n", "v" } },
       d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics", mode = { "n", "v" } },
-      t = { "<cmd>Telescope treesitter<cr>", "Code", mode = { "n", "v" } },
+      f = { "<cmd>Telescope find_files<cr>", "Files", mode = { "n", "v" } },
+      g = { "<cmd>Telescope live_grep<cr>", "Grep", mode = { "n" } },
+      G = { "<cmd>Telescope grep_string<cr>", "Grep for Selected", mode = { "v" } },
+      m = { "<cmd>Telescope man_pages<cr>", "Man Pages", mode = { "n", "v" } },
+      o = { "<cmd>Telescope oldfiles<cr>", "Recent Files", mode = { "n", "v" } },
+      r = { "<cmd>Telescope registers<cr>", "Registers", mode = { "n", "v" } },
+      s = { "<cmd>Telescope treesitter<cr>", "Code", mode = { "n", "v" } },
+      z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy in Buffer", mode = { "n", "v" } },
     },
+
     t = {
       name = "Terminal",
+      f = { "<cmd>ToggleTerm size=15 direction=float<cr>", "Floating", mode = { "n", "v" } },
       h = { "<cmd>ToggleTerm size=15 direction=horizontal<cr>", "Horizontal", mode = { "n", "v" } },
       v = { "<cmd>ToggleTerm size=15 direction=vertical<cr>", "Vertical", mode = { "n", "v" } },
-      f = { "<cmd>ToggleTerm size=15 direction=float<cr>", "Floating", mode = { "n", "v" } },
     },
+
     r = {
       name = "Run",
-      t = { "<cmd>GoTest<cr>", "Test All", mode = { "n", "v" } },
-      f = { "<cmd>GoTest -f<cr>", "Test File", mode = { "n", "v" } },
-      p = { "<cmd>GoTestPkg<cr>", "Test Package", mode = { "n", "v" } },
+      a = { "<cmd>ToggleTerm size=15 direction=horizontal<cr><cmd>TermExec cmd='clear && make'<cr>", "Make All", mode = { "n", "v" } },
+      C = { "<cmd>ToggleTerm size=15 direction=horizontal<cr><cmd>TermExec cmd='clear && make coverage'<cr>", "Tests with Coverage Threshold", mode = { "n", "v" } },
       c = { "<cmd>GoCoverage<cr>", "Tests with Coverage", mode = { "n", "v" } },
+      f = { "<cmd>GoTest -f<cr>", "Test File", mode = { "n", "v" } },
       l = { "<cmd>GoLint<cr>", "Linter", mode = { "n", "v" } },
+      p = { "<cmd>GoTestPkg<cr>", "Test Package", mode = { "n", "v" } },
+      t = { "<cmd>GoTest<cr>", "Test All", mode = { "n", "v" } },
     },
+
     d = {
       name = "Debug",
       b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint", mode = { "n", "v" } },
@@ -100,27 +109,30 @@ wk.setup {
       d = { "<cmd>GoDebug<cr>", "File", mode = { "n", "v" } },
       t = { "<cmd>GoDebug -t<cr>", "Test", mode = { "n", "v" } },
     },
+
     o = {
       name = "Ollama",
       c = { "<cmd>Gen Chat<cr>", "Chat", mode = { "n", "v" } },
       r = { "<cmd>Gen Review_Code<cr>", "Review Code", mode = { "n", "v" } },
     },
+
     c = {
       name = "ChatGPT",
-      c = { "<cmd>ChatGPT<CR>", "Chat" },
-      e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
-      g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
-      t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
-      k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
-      d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring", mode = { "n", "v" } },
       a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests", mode = { "n", "v" } },
+      c = { "<cmd>ChatGPT<CR>", "Chat" },
+      d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring", mode = { "n", "v" } },
+      e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
+      f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
+      g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
+      k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
+      l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
       o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
       s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
-      f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
-      x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
+      t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
       r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit", mode = { "n", "v" } },
-      l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
+      x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
     },
+
   }, { prefix = "<leader>" })
 }
 

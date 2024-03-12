@@ -16,17 +16,17 @@ keymap.set("i", "<c-u>", "<Esc>viwUea")
 keymap.set("i", "<c-t>", "<Esc>b~lea")
 
 -- Paste non-linewise text above or below current line, see https://stackoverflow.com/a/1346777/6064933
-keymap.set("n", "<leader>p", "m`o<ESC>p``", { desc = "paste below current line" })
-keymap.set("n", "<leader>P", "m`O<ESC>p``", { desc = "paste above current line" })
+keymap.set("n", "<space>p", "m`o<ESC>p``", { desc = "paste below current line" })
+keymap.set("n", "<space>P", "m`O<ESC>p``", { desc = "paste above current line" })
 
 -- Shortcut for faster save and quit
-keymap.set("n", "<leader>w", "<cmd>update<cr>", { silent = true, desc = "save buffer" })
+keymap.set("n", "<space>w", "<cmd>update<cr>", { silent = true, desc = "save buffer" })
 
 -- Saves the file if modified and quit
-keymap.set("n", "<leader>q", "<cmd>x<cr>", { silent = true, desc = "quit current window" })
+keymap.set("n", "<space>q", "<cmd>x<cr>", { silent = true, desc = "quit current window" })
 
 -- Quit all opened buffers
-keymap.set("n", "<leader>Q", "<cmd>qa!<cr>", { silent = true, desc = "quit nvim" })
+keymap.set("n", "<space>Q", "<cmd>qa!<cr>", { silent = true, desc = "quit nvim" })
 
 -- Navigation in the location and quickfix list
 keymap.set("n", "[l", "<cmd>lprevious<cr>zv", { silent = true, desc = "previous location item" })
@@ -131,7 +131,7 @@ keymap.set("n", "cc", '"_cc')
 keymap.set("x", "c", '"_c')
 
 -- Remove trailing whitespace characters
-keymap.set("n", "<leader><space>", "<cmd>StripTrailingWhitespace<cr>", { desc = "remove trailing space" })
+keymap.set("n", "<space><space>", "<cmd>StripTrailingWhitespace<cr>", { desc = "remove trailing space" })
 
 -- check the syntax group of current cursor position
 keymap.set("n", "<leader>st", "<cmd>call utils#SynGroup()<cr>", { desc = "check syntax group" })
@@ -200,9 +200,6 @@ local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do
   keymap.set("i", ch, ch .. "<c-g>u")
 end
-
--- insert semicolon in the end
-keymap.set("i", "<A-;>", "<Esc>miA;<Esc>`ii")
 
 -- Go to the beginning and end of current line in insert mode quickly
 keymap.set("i", "<C-A>", "<HOME>")
