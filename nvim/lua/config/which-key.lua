@@ -74,7 +74,7 @@ wk.setup {
       c = { "<cmd>Telescope commands<cr>", "Commands", mode = { "n", "v" } },
       d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics", mode = { "n", "v" } },
       f = { "<cmd>Telescope find_files<cr>", "Files", mode = { "n", "v" } },
-      g = { "<cmd>Telescope live_grep<cr>", "Grep", mode = { "n" } },
+      g = { "<cmd>Telescope live_grep<cr>", "Live Grep", mode = { "n", "v" } },
       G = { "<cmd>Telescope grep_string<cr>", "Grep for Selected", mode = { "v" } },
       m = { "<cmd>Telescope man_pages<cr>", "Man Pages", mode = { "n", "v" } },
       o = { "<cmd>Telescope oldfiles<cr>", "Recent Files", mode = { "n", "v" } },
@@ -106,7 +106,7 @@ wk.setup {
 
     d = {
       name = "Debug",
-      b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint", mode = { "n", "v" } },
+      b = { "<cmd>GoBreakToggle<cr>", "Toggle Breakpoint", mode = { "n", "v" } },
       B = { "<cmd>BreakCondition<cr>", "Conditional Breakpoint", mode = { "n", "v" } },
       c = { "<cmd>GoDbgContinue<cr>", "Continue", mode = { "n", "v" } },
       d = { "<cmd>GoDebug<cr>", "File", mode = { "n", "v" } },

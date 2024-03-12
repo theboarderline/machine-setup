@@ -76,7 +76,7 @@ local plugin_specs = {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-      require("go").setup()
+      require("config.go")
     end,
     event = {"CmdlineEnter"},
     ft = {"go", 'gomod'},
@@ -106,7 +106,7 @@ local plugin_specs = {
         "rcarriga/nvim-dap-ui",
         -- stylua: ignore
         keys = {
-          { "<leader>dI", function() require("dapui").toggle({}) end, desc = "Dap UI" },
+          { "<leader>di", function() require("dapui").toggle({}) end, desc = "Dap UI" },
 
           {
             "<leader>de",
@@ -116,7 +116,7 @@ local plugin_specs = {
               require('dapui').eval()
             end,
             mode = { "n", "v" },
-            desc = "Evaluate expression"
+            desc = "Evaluate"
           },
         },
         opts = {
@@ -329,6 +329,9 @@ local plugin_specs = {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
+    config = function()
+      require("config.telescope")
+    end,
     dependencies = {
       "nvim-telescope/telescope-symbols.nvim",
     },
