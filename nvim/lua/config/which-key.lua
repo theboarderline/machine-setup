@@ -98,6 +98,7 @@ wk.setup {
       f = { "<cmd>GoTest -f<cr>", "Test File", mode = { "n", "v" } },
       l = { "<cmd>GoLint<cr>", "Linter", mode = { "n", "v" } },
       p = { "<cmd>GoTestPkg<cr>", "Test Package", mode = { "n", "v" } },
+      r = { "<cmd>GoRename<cr>", "Rename", mode = { "n", "v" } },
       t = { "<cmd>GoTest<cr>", "Test All", mode = { "n", "v" } },
     },
 
