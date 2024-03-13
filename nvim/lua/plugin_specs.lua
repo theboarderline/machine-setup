@@ -622,6 +622,63 @@ local plugin_specs = {
   -- Add indent object for vim (useful for languages like Python)
   { "michaeljsmith/vim-indent-object", event = "VeryLazy" },
 
+  -- Markdown
+  {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+        require("peek").setup()
+        vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+        vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
+  },
+
+  {
+    "Zeioth/markmap.nvim",
+    build = "yarn global add markmap-cli",
+    cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
+    opts = {
+      html_output = "/tmp/markmap.html", -- (default) Setting a empty string "" here means: [Current buffer path].html
+      hide_toolbar = false, -- (default)
+      grace_period = 3600000 -- (default) Stops markmap watch after 60 minutes. Set it to 0 to disable the grace_period.
+    },
+    config = function(_, opts) require("markmap").setup(opts) end
+  },
+
+  {
+    "jubnzv/mdeval.nvim",
+    config = function()
+      require("config.mdeval")
+    end
+  },
+
+  {
+    "Myzel394/easytables.nvim",
+    config = function()
+      require("config.easytables")
+    end
+  },
+
+  -- Dropdown menus
+  {
+    'Bekaboo/dropbar.nvim',
+    -- optional, but required for fuzzy finder support
+    dependencies = {
+      'nvim-telescope/telescope-fzf-native.nvim'
+    }
+  },
+
+  -- Images
+  {
+    'edluffy/hologram.nvim',
+    config = function()
+      require('hologram').setup{
+        auto_display = true -- WIP automatic markdown image display, may be prone to breaking
+      }
+    end
+  },
+
   -- Only use these plugin on Windows and Mac and when LaTeX is installed
   {
     "lervag/vimtex",

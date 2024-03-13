@@ -94,9 +94,9 @@ wk.setup {
 
     C = {
       name = "Cypress",
-      e = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --browser chrome --headless --e2e'<cr>", "Run File", mode = { "n", "v" } },
-      f = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --spec %'<cr>", "Run File", mode = { "n", "v" } },
-      u = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --browser chrome --headless --component'<cr>", "Run File", mode = { "n", "v" } },
+      e = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --browser chrome --headless --e2e'<cr>", "Run E2E Tests", mode = { "n", "v" } },
+      s = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --spec %'<cr>", "Run Spec", mode = { "n", "v" } },
+      u = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --browser chrome --headless --component'<cr>", "Run Component Tests", mode = { "n", "v" } },
     },
 
     g = {
@@ -126,6 +126,14 @@ wk.setup {
       i = { "<cmd>Lazy install<cr>", "Install", mode = { "n", "v" } },
       r = { "<cmd>Lazy restore<cr>", "Restore", mode = { "n", "v" } },
       u = { "<cmd>Lazy update<cr>", "Update", mode = { "n", "v" } },
+    },
+
+    m = {
+      name = "Markdown",
+      e = { "<cmd>MdEval<cr>", "Evaludate code block", mode = { "n" }},
+      m = { "<cmd>MarkmapOpen<cr>", "Open Mindmap", mode = { "n" }},
+      p = { "<cmd>PeekOpen<cr>", "Preview in Browser", mode = { "n" }},
+      t = { "<cmd>EasyTablesCreateNew 3<cr>", "Create Table", mode = { "n" }},
     },
 
     o = {

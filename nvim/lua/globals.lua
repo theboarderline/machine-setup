@@ -74,6 +74,9 @@ vim.g.loaded_matchparen = 1
 -- Disable sql omni completion, it is broken.
 vim.g.loaded_sql_completion = 1
 
+-- Markdown syntax
+vim.g.markdown_fenced_languages = {'python', 'cpp', 'rust', 'go', 'javascript'}
+
 -- Source .env on startup
 vim.api.nvim_create_autocmd("VimEnter", {
   pattern = "*",
