@@ -21,6 +21,17 @@ end
 
 local plugin_specs = {
 
+  -- Dotenv
+  {
+    "ellisonleao/dotenv.nvim",
+    config = function()
+      require('dotenv').setup({
+        enable_on_load = true,
+        verbose = false,
+      })
+    end
+  },
+
   -- codeium
   {
       "Exafunction/codeium.nvim",
@@ -69,6 +80,13 @@ local plugin_specs = {
   },
 
   {
+    'sopa0/telescope-makefile',
+    config = function()
+      require'telescope'.load_extension('make')
+    end
+  },
+
+  {
     "ray-x/go.nvim",
     dependencies = {  -- optional packages
       "ray-x/guihua.lua",
@@ -84,6 +102,13 @@ local plugin_specs = {
   },
 
   -- DAP
+  {
+    'mfussenegger/nvim-dap-python',
+    config = function()
+      require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+    end,
+  },
+
   {
     'mfussenegger/nvim-dap',
     version = "*",
@@ -273,6 +298,12 @@ local plugin_specs = {
       require("config.treesitter")
     end,
   },
+
+  -- cucumber-ls
+  { "yaegassy/coc-cucumber" },
+
+  -- helm-ls
+  { "towolf/vim-helm" },
 
   -- Python indent (follows the PEP8 style)
   { "Vimjas/vim-python-pep8-indent", ft = { "python" } },
@@ -667,6 +698,14 @@ local plugin_specs = {
     cmd = { "OSCYank", "OSCYankReg" },
   },
 
+  {
+    "VonHeikemen/fine-cmdline.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    config = function()
+      require("config.fine-cmdline")
+    end
+  },
+
   -- The missing auto-completion for cmdline!
   {
     "gelguy/wilder.nvim",
@@ -688,7 +727,7 @@ local plugin_specs = {
   -- file explorer
   {
     "nvim-tree/nvim-tree.lua",
-    keys = { "<space>s" },
+    keys = { "<space>e" },
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("config.nvim-tree")

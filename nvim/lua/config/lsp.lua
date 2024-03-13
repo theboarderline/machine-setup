@@ -312,4 +312,5 @@ lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
 })
 
 require('go').setup()
+require'lspconfig'.pyright.setup{}
 

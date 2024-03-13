@@ -82,7 +82,7 @@ require('go').setup({
   dap_debug_gui = {}, -- bool|table put your dap-ui setup here set to false to disable
   dap_debug_vt = { enabled_commands = true, all_frames = true }, -- bool|table put your dap-virtual-text setup here set to false to disable
 
-  dap_port = 38697, -- can be set to a number, if set to -1 go.nvim will pick up a random port
+  dap_port = -1, -- can be set to a number, if set to -1 go.nvim will pick up a random port
   dap_timeout = 15, --  see dap option initialize_timeout_sec = 15,
   dap_retries = 20, -- see dap option max_retries
   build_tags = "tag1,tag2", -- set default build tags

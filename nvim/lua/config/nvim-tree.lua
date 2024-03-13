@@ -1,5 +1,22 @@
 local keymap = vim.keymap
 local nvim_tree = require("nvim-tree")
+local api = require("nvim-tree.api")
+
+local function my_on_attach(bufnr)
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts('Up'))
+  keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+  keymap.set('n', 'H', api.node.navigate.parent_close, opts('Close Node'))
+  keymap.set('n', 'v', api.node.open.vertical, opts('View and Split Vertically'))
+  keymap.set('n', 'h', api.node.open.horizontal, opts('View and Split Horizontally'))
+end
 
 nvim_tree.setup {
   auto_reload_on_write = true,
@@ -17,6 +34,7 @@ nvim_tree.setup {
     number = false,
     relativenumber = false,
     signcolumn = "yes",
+    adaptive_size = true,
   },
   renderer = {
     indent_markers = {
@@ -102,7 +120,13 @@ nvim_tree.setup {
   },
 }
 
-keymap.set("n", "<space>s", require("nvim-tree.api").tree.toggle, {
+keymap.set("n", "<space>e", api.tree.toggle, {
   silent = true,
   desc = "toggle nvim-tree",
 })
+
+require("nvim-tree").setup {
+  on_attach = my_on_attach,
+}
+
+

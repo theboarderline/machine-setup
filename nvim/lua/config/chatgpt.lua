@@ -1,3 +1,3 @@
 require("chatgpt").setup({
-    api_key_cmd = "op read op://CGS/openai-key/credential --no-newline"
+    api_key_cmd = "op read op://Private/openai-key/credential --no-newline"
 })

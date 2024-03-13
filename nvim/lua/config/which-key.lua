@@ -63,10 +63,7 @@ wk.setup {
 
   wk.register({
 
-    g = {
-      name = "Git",
-      g = { "<cmd>LazyGit<cr>", "Lazy Git", mode = { "n", "v" } },
-    },
+    G = { "<cmd>LazyGit<cr>", "Lazy Git", mode = { "n", "v" } },
 
     f = {
       name = "Search",
@@ -90,27 +87,43 @@ wk.setup {
       v = { "<cmd>ToggleTerm size=15 direction=vertical<cr>", "Vertical", mode = { "n", "v" } },
     },
 
-    r = {
-      name = "Run",
-      a = { "<cmd>ToggleTerm size=15 direction=horizontal<cr><cmd>TermExec cmd='clear && make'<cr>", "Make All", mode = { "n", "v" } },
-      C = { "<cmd>ToggleTerm size=15 direction=horizontal<cr><cmd>TermExec cmd='clear && make coverage'<cr>", "Tests with Coverage Threshold", mode = { "n", "v" } },
+    p = {
+      name = "Python",
+      d = { "<cmd>lua require('dap-python').debug_selection()<cr>", "Debug Selection", mode = { "n", "v" } },
+    },
+
+    C = {
+      name = "Cypress",
+      f = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --spec %'<cr>", "Run File", mode = { "n", "v" } },
+    },
+
+    g = {
+      name = "Go",
+      b = { "<cmd>GoBreakToggle<cr>", "Toggle Breakpoint", mode = { "n", "v" } },
+      B = { "<cmd>BreakCondition<cr>", "Conditional Breakpoint", mode = { "n", "v" } },
       c = { "<cmd>GoCoverage<cr>", "Tests with Coverage", mode = { "n", "v" } },
       f = { "<cmd>GoTest -f<cr>", "Test File", mode = { "n", "v" } },
       g = { "<cmd>GoGet<cr>", "Go Get", mode = { "n", "v" } },
       l = { "<cmd>GoLint<cr>", "Linter", mode = { "n", "v" } },
       p = { "<cmd>GoTestPkg<cr>", "Test Package", mode = { "n", "v" } },
       r = { "<cmd>GoRename<cr>", "Rename", mode = { "n", "v" } },
-      R = { "<cmd>ToggleTerm size=15 direction=horizontal<cr><cmd>TermExec cmd='clear && make run'<cr>", "Make Run", mode = { "n", "v" } },
+      R = { "<cmd>GoRun<cr>", "Go Run", mode = { "n", "v" } },
       t = { "<cmd>GoTest<cr>", "Test All", mode = { "n", "v" } },
-    },
-
-    d = {
-      name = "Debug",
-      b = { "<cmd>GoBreakToggle<cr>", "Toggle Breakpoint", mode = { "n", "v" } },
-      B = { "<cmd>BreakCondition<cr>", "Conditional Breakpoint", mode = { "n", "v" } },
+      T = { "<cmd>GoDebug -t<cr>", "Debug Test", mode = { "n", "v" } },
       c = { "<cmd>GoDbgContinue<cr>", "Continue", mode = { "n", "v" } },
       d = { "<cmd>GoDebug<cr>", "File", mode = { "n", "v" } },
-      t = { "<cmd>GoDebug -t<cr>", "Test", mode = { "n", "v" } },
+    },
+
+    l = {
+      name = "Lazy",
+      c = { "<cmd>Lazy check<cr>", "Check for Updates", mode = { "n", "v" } },
+      C = { "<cmd>Lazy clean<cr>", "Clean", mode = { "n", "v" } },
+      d = { "<cmd>Lazy debug<cr>", "Debug", mode = { "n", "v" } },
+      h = { "<cmd>Lazy home<cr>", "Home", mode = { "n", "v" } },
+      H = { "<cmd>Lazy health<cr>", "Health", mode = { "n", "v" } },
+      i = { "<cmd>Lazy install<cr>", "Install", mode = { "n", "v" } },
+      r = { "<cmd>Lazy restore<cr>", "Restore", mode = { "n", "v" } },
+      u = { "<cmd>Lazy update<cr>", "Update", mode = { "n", "v" } },
     },
 
     o = {
