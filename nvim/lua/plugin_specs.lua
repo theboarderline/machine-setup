@@ -671,7 +671,12 @@ local plugin_specs = {
   },
 
   -- K8s
-  { "skanehira/k8s.vim" },
+  {
+    "hsalem7/nvim-k8s",
+    config = function()
+      vim.g.vim_k8s_toggle_key_map = '<leader>k'
+    end
+  },
 
   -- Dropdown menus
   -- {
