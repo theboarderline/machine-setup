@@ -123,7 +123,7 @@ wk.setup {
 
     G = { "<cmd>LazyGit<cr>", "Lazy Git", mode = { "n", "v" } },
 
-    ["<leader>k"] = "k9s",
+    ["k"] = "k9s",
 
     l = {
       name = "Lazy",

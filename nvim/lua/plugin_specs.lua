@@ -678,6 +678,20 @@ local plugin_specs = {
     end
   },
 
+  -- Toggler
+  {
+    "nguyenvukhang/nvim-toggler",
+    config = function()
+      require('nvim-toggler').setup({
+        inverses = {
+          ['!=='] = '==='
+        },
+        remove_default_keybinds = false,
+        remove_default_inverses = false,
+      })
+    end
+  },
+
   -- Dropdown menus
   -- {
   --   'Bekaboo/dropbar.nvim',
@@ -688,14 +702,14 @@ local plugin_specs = {
   -- },
 
   -- Images
-  {
-    'edluffy/hologram.nvim',
-    config = function()
-      require('hologram').setup{
-        auto_display = true -- WIP automatic markdown image display, may be prone to breaking
-      }
-    end
-  },
+  -- {
+  --   'edluffy/hologram.nvim',
+  --   config = function()
+  --     require('hologram').setup{
+  --       auto_display = true -- WIP automatic markdown image display, may be prone to breaking
+  --     }
+  --   end
+  -- },
 
   -- Only use these plugin on Windows and Mac and when LaTeX is installed
   {
