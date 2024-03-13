@@ -167,6 +167,10 @@ keymap.set("n", "<S-u>", ":vertical resize +3<CR>")
 keymap.set("n", "<S-h>", ":bprevious<CR>")
 keymap.set("n", "<S-l>", ":bnext<CR>")
 
+-- Navigate windows
+keymap.set("n", "<C-h>", "<C-w>h")
+keymap.set("n", "<C-l>", "<C-w>l")
+
 -- Replace visual selection with text in register, but not contaminate the register,
 -- see also https://stackoverflow.com/q/10723700/6064933.
 keymap.set("x", "p", '"_c<Esc>p')

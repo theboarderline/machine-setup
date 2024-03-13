@@ -126,6 +126,7 @@ autoload -Uz compinit
 compinit
 
 eval "$(starship init zsh)"
+eval $(twilio autocomplete:script zsh)
 
 export PATH=$PATH:$(go env GOPATH)/bin
 
