@@ -2,17 +2,24 @@ local keymap = vim.keymap
 local api = vim.api
 local uv = vim.loop
 
+-- Cmdline prompt
+keymap.set({ "n", "v", "i", "x" }, ":", "<cmd>FineCmdline<CR>", { desc = "command line prompt" })
+
 -- ToggleTerm
 keymap.set({ "n", "i", "v", "t"  }, "<c-\\>", "<cmd>ToggleTerm<CR>", { desc = "toggle terminal" })
 
-keymap.set({ "n" }, "o", "A<CR>", { noremap = false, desc = "enter insert mode on next line" })
-keymap.set({ "n" }, "S", "xi", { noremap = false, desc = "delete character and enter insert mode" })
+-- Entering insert mode
+keymap.set({ "n" }, "o", "A<CR>", { desc = "enter insert mode on next line" })
+keymap.set({ "n" }, "S", "xi", { desc = "delete character and enter insert mode" })
 
 -- Turn the word under cursor to upper case
-keymap.set("i", "<a-u>", "<Esc>viwUea")
+keymap.set("i", "<c-i>", "<Esc>viwUea")
+
+-- Turn the word under cursor to lower case
+keymap.set("i", "<c-o>", "<Esc>viwuea")
 
 -- Turn the current word into title case
-keymap.set("i", "<c-t>", "<Esc>b~lea")
+keymap.set("i", "<c-t>", "<Esc>eb~lea")
 
 -- Paste non-linewise text above or below current line, see https://stackoverflow.com/a/1346777/6064933
 keymap.set("n", "<space>p", "m`o<ESC>p``", { desc = "paste below current line" })
@@ -40,9 +47,8 @@ keymap.set("n", "]q", "<cmd>cnext<CR>zv", { silent = true, desc = "next qf item"
 keymap.set("n", "[Q", "<cmd>cfirst<CR>zv", { silent = true, desc = "first qf item" })
 keymap.set("n", "]Q", "<cmd>clast<CR>zv", { silent = true, desc = "last qf item" })
 
--- Cmdline prompt
--- keymap.set({ "n", "v", "i", "x" }, ":", "<cmd>FineCmdline<CR><bs>", { desc = "command line prompt" })
-keymap.set({ "n", "v", "i", "x" }, ":", "<cmd>lua require('fine-cmdline').open({default_value = ''})<CR>", { desc = "command line prompt" })
+-- Comment out current line
+-- keymap.set({ "n" }, "<C-c>", "Vgc", { desc = "comment out current line" })
 
 -- Save key strokes (now we do not need to press shift to enter command mode).
 keymap.set({ "n", "x" }, ";", ":")
@@ -54,7 +60,7 @@ keymap.set("n", [[\x]], "<cmd>windo lclose <bar> cclose <CR>", {
 })
 
 -- Delete a buffer, without closing the window, see https://stackoverflow.com/q/4465095/6064933
-keymap.set("n", [[\d]], "<cmd>bprevious <bar> bdelete #<CR>", {
+keymap.set("n", [[<space>d]], "<cmd>bprevious <bar> bdelete #<CR>", {
   silent = true,
   desc = "delete buffer",
 })
@@ -122,8 +128,7 @@ keymap.set("n", "<space>cd", "<cmd>lcd %:p:h<CR><cmd>pwd<CR>", { desc = "change 
 keymap.set("t", "<Esc>", [[<c-\><c-n>]])
 
 -- Toggle spell checking
-keymap.set("n", "<F11>", "<cmd>set spell!<CR>", { desc = "toggle spell" })
-keymap.set("i", "<F11>", "<c-o><cmd>set spell!<CR>", { desc = "toggle spell" })
+keymap.set({ "n", "i", "v", "x" }, "<C-s>", "<cmd>set spell!<CR>", { desc = "toggle spell" })
 
 -- Change text without putting it into the vim register,
 -- see https://stackoverflow.com/q/54255/6064933

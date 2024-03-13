@@ -82,9 +82,9 @@ wk.setup {
 
     t = {
       name = "Terminal",
-      f = { "<cmd>ToggleTerm size=15 direction=float<cr>", "Floating", mode = { "n", "v" } },
-      h = { "<cmd>ToggleTerm size=15 direction=horizontal<cr>", "Horizontal", mode = { "n", "v" } },
-      v = { "<cmd>ToggleTerm size=15 direction=vertical<cr>", "Vertical", mode = { "n", "v" } },
+      f = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=15 direction=float<cr>", "Floating", mode = { "n", "v" } },
+      h = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=15 direction=horizontal<cr>", "Horizontal", mode = { "n", "v" } },
+      v = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=70 direction=vertical<cr>", "Vertical", mode = { "n", "v" } },
     },
 
     p = {
@@ -94,7 +94,9 @@ wk.setup {
 
     C = {
       name = "Cypress",
+      e = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --browser chrome --headless --e2e'<cr>", "Run File", mode = { "n", "v" } },
       f = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --spec %'<cr>", "Run File", mode = { "n", "v" } },
+      u = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --browser chrome --headless --component'<cr>", "Run File", mode = { "n", "v" } },
     },
 
     g = {
