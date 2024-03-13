@@ -1,6 +1,20 @@
 local fineline = require('fine-cmdline')
 local fn = fineline.fn
 
+local imap = function(key, command, buffer)
+  vim.keymap.set('i', key, command, {buffer = buffer})
+end
+
+set_keymaps = function(buffer)
+  imap('<Esc>', '<cmd>stopinsert<CR>', buffer)
+  imap('<Up>', fn.up_history, buffer)
+  imap('<Down>', fn.down_history, buffer)
+  imap('<C-h>', fn.up_search_history, buffer)
+  imap('<C-l>', fn.down_search_history, buffer)
+  imap('<C-k>', fn.stop_complete_or_previous_item, buffer)
+  imap('<C-j>', fn.complete_or_next_item, buffer)
+end
+
 fineline.setup({
   cmdline = {
     enable_keymaps = true,
@@ -9,8 +23,8 @@ fineline.setup({
   },
   popup = {
     position = {
-      row = '10%',
-      col = '50%',
+      row = '3%',
+      col = '95%',
     },
     size = {
       width = '40%',
@@ -27,8 +41,7 @@ fineline.setup({
       -- code
     end,
     after_mount = function(input)
-      vim.keymap.set('i', '<Esc>', '<cmd>stopinsert<cr>', {buffer = input.bufnr})
-      fn.complete_or_next_item()
+      set_keymaps(input.bufnr)
     end,
     set_keymaps = function(imap, feedkeys)
       -- code

@@ -11,7 +11,7 @@ local function my_on_attach(bufnr)
   api.config.mappings.default_on_attach(bufnr)
 
   -- custom mappings
-  keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts('Up'))
+  keymap.set('n', '<C-t>', api.tree.change_root_to_node, opts('Up'))
   keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
   keymap.set('n', 'H', api.node.navigate.parent_close, opts('Close Node'))
   keymap.set('n', 'v', api.node.open.vertical, opts('View and Split Vertically'))
