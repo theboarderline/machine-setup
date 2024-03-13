@@ -47,63 +47,16 @@ format = '[($domain)(\($project\))]($style) '
 symbol = "⛵ "
 style = "green"
 disabled = false
-[kubernetes.context_aliases]
+[[kubernetes.contexts]]
+context_pattern =  "gke_d-platform-gke-project-hsw_us-central1-a_central-cluster"
+context_alias   = "d-platform"
 
-"gke_prod-pixo-shared-gke-project_us-central1_us-central1-cluster" = "prod-shared-central"
-"gke_prod-pixo-shared-gke-project_us-east4_us-east4-cluster" = "prod-shared-east"
-
-"gke_stage-pixo-shared-gke-project_us-central1_us-central1-cluster" = "stage-shared-central"
-"gke_stage-pixo-shared-gke-project_us-east4_us-east4-cluster" = "stage-shared-east"
-
-"gke_dev-pixo-shared-gke-project_us-central1_us-central1-cluster" = "dev-shared-central"
-"gke_dev-pixo-shared-gke-project_us-east4_us-east4-cluster" = "dev-shared-east"
-
-
-"gke_walker-pixo-init-project_us-central1-a_central-cluster" = "pixo-walker-sandbox"
-
-"gke_pixo-gke_us-central1_central-cluster" = "pixo-cpl-cluster"
-"gke_pixo-gke_us-central1_dev-cluster" = "dev-apex-cluster"
-"gke_pixo-gke_us-central1_prod-cluster" = "prod-apex-cluster"
-
-"gke_ignite-walker-project-gbt_us-central1-a_primary-cluster" = "walker-ignite"
-
-"gke_o-platform-gke-project_us-central1_central-cluster" = "walker-ops"
-"gke_o-platform-gke-project_us-central1-a_central-cluster" = "walker-ops"
-
-"gke_d-platform-gke-project_us-central1-a_central-cluster" = "walker-dev"
-"gke_t-platform-gke-project_us-central1-a_central-cluster" = "walker-test"
-"gke_s-platform-gke-project_us-central1-a_central-cluster" = "walker-stage"
-
-"gke_p-platform-gke-project_us-central1-a_central-cluster" = "walker-prod"
-"gke_p-platform-gke-project_us-central1_central-cluster" = "walker-prod"
-
-"gke_dev-gke-project-gyj_us-central1-a_primary-cluster" = "remi-dev"
-"gke_test-gke-project-yal_us-central1-a_primary-cluster" = "remi-test"
-"gke_stage-gke-project_us-central1-a_primary-cluster" = "remi-stage"
-"gke_prod-gke-project_us-central1-a_primary-cluster" = "remi-prod"
-
-"gke_o-anthos-gke-project-kgp_us-central1_primary-cluster" = "anthos-ops"
-"gke_d-anthos-gke-project-xin_us-central1_primary-cluster" = "anthos-dev"
-"gke_t-anthos-gke-project-vdo_us-central1_primary-cluster" = "anthos-test"
-"gke_s-anthos-gke-project-pgj_us-central1_primary-cluster" = "anthos-stage"
-"gke_p-anthos-gke-project-yje_us-central1_primary-cluster" = "anthos-prod"
-
-"gke_o-argo-gke-project-qss_us-central1_primary-cluster" = "ops-argo"
-"gke_o-argo-gke-project-qss_us-central1-a_primary-cluster" = "ops-argo"
-
-"gke_d-argo-gke-project-dpo_us-central1_primary-cluster" = "dev-argo"
-"gke_d-argo-gke-project-dpo_us-central1-a_primary-cluster" = "dev-argo"
-
-"gke_t-argo-gke-project-crf_us-central1_primary-cluster" = "test-argo"
-"gke_t-argo-gke-project-crf_us-central1-a_primary-cluster" = "test-argo"
-
-"gke_s-argo-gke-project-qss_us-central1_primary-cluster" = "stage-argo"
-
-"gke_p-argo-gke-project-qss_us-central1_primary-cluster" = "prod-argo"
-
+[[kubernetes.contexts]]
+context_alias = "p-platform"
+context_pattern = "gke_p-platform-gke-project-qjo_us-central1-a_central-cluster"
 
 [golang]
-disabled = true
+disabled = false
 
 [terraform]
 format = "[🏎💨 $workspace]($style) "
@@ -114,3 +67,7 @@ disabled = true
 
 [nodejs]
 disabled = true
+
+[custom]
+disabled = false
+

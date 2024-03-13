@@ -2,10 +2,20 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 set -o vi
 
-export PATH='/usr/local/bin:/usr/bin:/usr/sbin:/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/walkerobrien/Desktop/projects/misc/fabric-samples/bin:/sbin'
+export PATH='/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/walkerobrien/Desktop/projects/misc/fabric-samples/bin:/sbin:/usr/local/bin/bin'
+
 export EDITOR=nvim
-export NODE_OPTIONS=--no-experimental-fetch
 
 source ~/.zshrc
 
+
+
+. "$HOME/.cargo/env"
+
+export MODULAR_HOME="$HOME/.modular"
+export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 

@@ -1,18 +1,32 @@
 
 alias h='hstr'
+alias lg='lazygit'
 
 # Ssh file manipulations
-alias pixo='gcloud config set account walker.obrien@pixovr.com; cp ~/.ssh/id_rsa.pixo ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.pixo ~/.ssh/id_rsa.pub'
+alias pix='gcloud config set account walker.obrien@pixovr.com; cp ~/.ssh/id_rsa.pixo ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.pixo ~/.ssh/id_rsa.pub'
 alias wob='gcloud config set account wnobrien@lakegames.us; cp ~/.ssh/id_rsa.wob ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.wob ~/.ssh/id_rsa.pub'
 
 alias getpub='cat ~/.ssh/id_rsa.pub'
 
-# for x in `docker images | awk '{print $3}'`; do docker image rm $x --force ; done
+function cleanImages {
+  for x in `docker images | awk '{print $3}'`; do docker image rm $x --force ; done
+}
+
 alias ss='source ./bin/env.sh'
+
+alias weather='curl wttr.in/chicago'
+
+alias gg='go get'
+alias gmt='go mod tidy'
+alias gmd='go mod download'
+
+
+alias cluster-d='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project d-platform-gke-project-hsw'
+alias cluster-p='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project p-platform-gke-project-qjo'
 
 alias ls='ls -aG'
 alias lss='ls -alhSG'
-# alias ll='llama'
+
 function ll {
   cd "$(llama "$@")"
 }
@@ -27,7 +41,6 @@ alias nv='nvim .'
 alias postgresql='postgresql@14'
 
 alias pip='pip3'
-alias python='python3'
 alias rss='python manage.py runserver'
 
 alias ys='yarn start'
@@ -42,11 +55,11 @@ alias sb='source ~/.zshrc'
 alias sp='source ~/.zprofile'
 
 
-alias vimv='nvim ~/.vimrc; source ~/.vimrc'
-alias vimb='nvim ~/.zshrc; source ~/.zshrc'
-alias vimp='nvim ~/.zprofile; source ~/.zprofile'
-alias vimz="nvim ~/.config/starship.toml"
-alias vimc='nvim ~/.config/nvim'
+alias vimv="$EDITOR ~/.vimrc; source ~/.vimrc"
+alias vimb="$EDITOR ~/.zshrc; source ~/.zshrc"
+alias vimp="$EDITOR ~/.zprofile; source ~/.zprofile"
+alias vimz="$EDITOR ~/.config/starship.toml"
+alias vimc="$EDITOR ~/.config/nvim"
 
 
 alias tf='terraform'
@@ -57,6 +70,7 @@ alias tfv='terraform validate'
 
 alias k='kubectl'
 alias kcsc='kubectl config set-context --current --namespace'
+alias ktx='kubectx'
 
 alias kgaa='kgp -A | grep nginx-dep; kgp -A | grep api-dep'
 
@@ -92,10 +106,12 @@ alias kgr='kg dnsrecordset'
 # Git shortcuts
 alias gs='git status'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias gss='git status -s'
 alias gaa='git add -A'
 alias gc='git commit -m'
 alias gpp='git fetch; git pull; git push'
+alias gpt='gpp && git push --tags'
 
 
 # Kubectl Configurations
@@ -111,16 +127,29 @@ compinit
 
 eval "$(starship init zsh)"
 
-export PATH="/usr/local/opt/go@1.16/bin:$PATH"
 export PATH=$PATH:$(go env GOPATH)/bin
 
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
+
+
+eval "$(zoxide init zsh --cmd cd)"
+
+function z {
+  cd "$(zoxide query "$@")"
+}
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+export PATH=$PATH:$(go env GOPATH)/bin
+
+
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/walkerobrien/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
 
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -128,5 +157,4 @@ if [ -f '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/wa
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc'; fi
-
 
