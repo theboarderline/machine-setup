@@ -103,3 +103,11 @@ local function open_nvim_tree(data)
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = {"*.go", "*.py", "*.js", "*.ts" },  -- This restricts the autocommand to only .txt files
+    callback = function()
+        vim.cmd("Coverage")
+    end
+})
+

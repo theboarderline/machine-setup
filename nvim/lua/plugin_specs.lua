@@ -711,6 +711,15 @@ local plugin_specs = {
   --   end
   -- },
 
+  -- Test Coverage
+  {
+    "andythigpen/nvim-coverage",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("config.coverage")
+    end
+  },
+
   -- Only use these plugin on Windows and Mac and when LaTeX is installed
   {
     "lervag/vimtex",
