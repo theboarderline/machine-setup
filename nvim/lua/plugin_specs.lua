@@ -670,14 +670,17 @@ local plugin_specs = {
     }
   },
 
+  -- K8s
+  { "skanehira/k8s.vim" },
+
   -- Dropdown menus
-  {
-    'Bekaboo/dropbar.nvim',
-    -- optional, but required for fuzzy finder support
-    dependencies = {
-      'nvim-telescope/telescope-fzf-native.nvim'
-    }
-  },
+  -- {
+  --   'Bekaboo/dropbar.nvim',
+  --   -- optional, but required for fuzzy finder support
+  --   dependencies = {
+  --     'nvim-telescope/telescope-fzf-native.nvim'
+  --   }
+  -- },
 
   -- Images
   {

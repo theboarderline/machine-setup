@@ -123,6 +123,11 @@ wk.setup {
 
     G = { "<cmd>LazyGit<cr>", "Lazy Git", mode = { "n", "v" } },
 
+    k = {
+      name = "K8s",
+      p = { "<cmd><Plug>(k8s:pods:describe)<cr>", "Pods", mode = { "n" } },
+    },
+
     l = {
       name = "Lazy",
       c = { "<cmd>Lazy check<cr>", "Check for Updates", mode = { "n", "v" } },
