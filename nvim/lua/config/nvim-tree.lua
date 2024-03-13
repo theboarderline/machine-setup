@@ -13,9 +13,7 @@ local function my_on_attach(bufnr)
   -- custom mappings
   keymap.set('n', '<C-t>', api.tree.change_root_to_node, opts('Up'))
   keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
-  keymap.set('n', 'H', api.node.navigate.parent_close, opts('Close Node'))
-  keymap.set('n', 'v', api.node.open.vertical, opts('View and Split Vertically'))
-  keymap.set('n', 'h', api.node.open.horizontal, opts('View and Split Horizontally'))
+  keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Node'))
 end
 
 nvim_tree.setup {
@@ -75,7 +73,7 @@ nvim_tree.setup {
   filters = {
     dotfiles = false,
     custom = {},
-    exclude = {},
+    exclude = { ".env" },
   },
   git = {
     enable = true,

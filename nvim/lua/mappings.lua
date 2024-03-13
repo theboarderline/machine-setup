@@ -5,8 +5,8 @@ local uv = vim.loop
 -- ToggleTerm
 keymap.set({ "n", "i", "v", "t"  }, "<c-\\>", "<cmd>ToggleTerm<CR>", { desc = "toggle terminal" })
 
-keymap.set({ "n" }, "o", "A<CR>", { desc = "enter insert mode on next line" })
-keymap.set({ "n" }, "s", "xi", { desc = "delete character and enter insert mode" })
+keymap.set({ "n" }, "o", "A<CR>", { noremap = false, desc = "enter insert mode on next line" })
+keymap.set({ "n" }, "S", "xi", { noremap = false, desc = "delete character and enter insert mode" })
 
 -- Turn the word under cursor to upper case
 keymap.set("i", "<a-u>", "<Esc>viwUea")
