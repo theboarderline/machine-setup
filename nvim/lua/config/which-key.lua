@@ -63,7 +63,31 @@ wk.setup {
 
   wk.register({
 
-    G = { "<cmd>LazyGit<cr>", "Lazy Git", mode = { "n", "v" } },
+    c = {
+      name = "ChatGPT",
+      a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests", mode = { "n", "v" } },
+      c = { "<cmd>ChatGPT<CR>", "Chat" },
+      d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring", mode = { "n", "v" } },
+      e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
+      f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
+      g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
+      k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
+      l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
+      o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
+      s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
+      t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
+      r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit", mode = { "n", "v" } },
+      x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
+    },
+
+    C = {
+      name = "Cypress",
+      e = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --browser chrome --headless --e2e'<cr>", "Run E2E Tests", mode = { "n", "v" } },
+      s = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --spec %'<cr>", "Run Spec", mode = { "n", "v" } },
+      u = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --browser chrome --headless --component'<cr>", "Run Component Tests", mode = { "n", "v" } },
+    },
+
+    D = { "<cmd>DataViewer<cr>", "Open Data Viewer", mode = { "n", "v" } },
 
     f = {
       name = "Search",
@@ -78,25 +102,6 @@ wk.setup {
       r = { "<cmd>Telescope registers<cr>", "Registers", mode = { "n", "v" } },
       s = { "<cmd>Telescope treesitter<cr>", "Code", mode = { "n", "v" } },
       z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy in Buffer", mode = { "n", "v" } },
-    },
-
-    t = {
-      name = "Terminal",
-      f = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=15 direction=float<cr>", "Floating", mode = { "n", "v" } },
-      h = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=15 direction=horizontal<cr>", "Horizontal", mode = { "n", "v" } },
-      v = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=70 direction=vertical<cr>", "Vertical", mode = { "n", "v" } },
-    },
-
-    p = {
-      name = "Python",
-      d = { "<cmd>lua require('dap-python').debug_selection()<cr>", "Debug Selection", mode = { "n", "v" } },
-    },
-
-    C = {
-      name = "Cypress",
-      e = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --browser chrome --headless --e2e'<cr>", "Run E2E Tests", mode = { "n", "v" } },
-      s = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --spec %'<cr>", "Run Spec", mode = { "n", "v" } },
-      u = { "<cmd>TermExec mode=horizontal cmd='npx cypress run --browser chrome --headless --component'<cr>", "Run Component Tests", mode = { "n", "v" } },
     },
 
     g = {
@@ -115,6 +120,8 @@ wk.setup {
       c = { "<cmd>GoDbgContinue<cr>", "Continue", mode = { "n", "v" } },
       d = { "<cmd>GoDebug<cr>", "File", mode = { "n", "v" } },
     },
+
+    G = { "<cmd>LazyGit<cr>", "Lazy Git", mode = { "n", "v" } },
 
     l = {
       name = "Lazy",
@@ -142,21 +149,16 @@ wk.setup {
       r = { "<cmd>Gen Review_Code<cr>", "Review Code", mode = { "n", "v" } },
     },
 
-    c = {
-      name = "ChatGPT",
-      a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests", mode = { "n", "v" } },
-      c = { "<cmd>ChatGPT<CR>", "Chat" },
-      d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring", mode = { "n", "v" } },
-      e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
-      f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
-      g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
-      k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
-      l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
-      o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
-      s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
-      t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
-      r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit", mode = { "n", "v" } },
-      x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
+    p = {
+      name = "Python",
+      d = { "<cmd>lua require('dap-python').debug_selection()<cr>", "Debug Selection", mode = { "n", "v" } },
+    },
+
+    t = {
+      name = "Terminal",
+      f = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=15 direction=float<cr>", "Floating", mode = { "n", "v" } },
+      h = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=15 direction=horizontal<cr>", "Horizontal", mode = { "n", "v" } },
+      v = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=70 direction=vertical<cr>", "Vertical", mode = { "n", "v" } },
     },
 
   }, { prefix = "<leader>" })

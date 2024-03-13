@@ -660,6 +660,16 @@ local plugin_specs = {
     end
   },
 
+  -- Data files
+  {
+    'vidocqh/data-viewer.nvim',
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "kkharji/sqlite.lua", -- Optional, sqlite support
+    }
+  },
+
   -- Dropdown menus
   {
     'Bekaboo/dropbar.nvim',
