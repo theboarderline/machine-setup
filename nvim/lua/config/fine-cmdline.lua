@@ -23,8 +23,8 @@ fineline.setup({
   },
   popup = {
     position = {
-      row = '3%',
-      col = '95%',
+      row = '95%',
+      col = '3%',
     },
     size = {
       width = '40%',

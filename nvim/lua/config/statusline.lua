@@ -118,6 +118,10 @@ local virtual_env = function()
   end
 end
 
+local package_info = function()
+  return require('package-info').get_status()
+end
+
 require("lualine").setup {
   options = {
     icons_enabled = true,
@@ -159,17 +163,24 @@ require("lualine").setup {
       },
     },
     lualine_x = {
-      "encoding",
       {
-        "fileformat",
-        symbols = {
-          unix = "unix",
-          dos = "win",
-          mac = "mac",
-        },
+        package_info,
+        color = { fg = 'white' },
       },
-      "filetype",
     },
+    -- lualine_x = { "copilot", filetype },
+    -- lualine_x = {
+    --   "encoding",
+    --   {
+    --     "fileformat",
+    --     symbols = {
+    --       unix = "unix",
+    --       dos = "win",
+    --       mac = "mac",
+    --     },
+    --   },
+    --   "filetype",
+    -- },
     lualine_y = {
       "location",
     },

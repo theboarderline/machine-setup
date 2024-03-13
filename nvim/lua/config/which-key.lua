@@ -145,6 +145,17 @@ wk.setup {
       t = { "<cmd>EasyTablesCreateNew 3<cr>", "Create Table", mode = { "n" }},
     },
 
+    n = {
+      name = "Node",
+      c = { "<cmd>lua require('package-info').change_version()<cr>", "Change Dependency Version", mode = { "n", "v" } },
+      d = { "<cmd>lua require('package-info').delete()<cr>", "Delete Dependency", mode = { "n", "v" } },
+      h = { "<cmd>lua require('package-info').hide()<cr>", "Hide Dependency Versions", mode = { "n", "v" } },
+      i = { "<cmd>lua require('package-info').install()<cr>", "Install Dependency", mode = { "n", "v" } },
+      s = { "<cmd>lua require('package-info').show()<cr>", "Show Dependency Versions", mode = { "n", "v" } },
+      t = { "<cmd>lua require('package-info').toggle()<cr>", "Toggle Showing Dependency Versions", mode = { "n", "v" } },
+      u = { "<cmd>lua require('package-info').update()<cr>", "Update Dependency", mode = { "n", "v" } },
+    },
+
     o = {
       name = "Ollama",
       c = { "<cmd>Gen Chat<cr>", "Chat", mode = { "n", "v" } },

@@ -692,6 +692,7 @@ local plugin_specs = {
     end
   },
 
+  -- Need to upgrade to 0.10.0
   -- Dropdown menus
   -- {
   --   'Bekaboo/dropbar.nvim',
@@ -717,6 +718,15 @@ local plugin_specs = {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("config.coverage")
+    end
+  },
+
+  -- NPM Updates
+  {
+    "vuki656/package-info.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    config = function()
+      require('config.package-info')
     end
   },
 

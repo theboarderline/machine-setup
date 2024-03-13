@@ -26,5 +26,12 @@ require('telescope').setup{
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
+    package_info = {
+        -- Optional theme (the extension doesn't set a default theme)
+        theme = "ivy",
+    },
   }
 }
+
+require("telescope").load_extension("package_info")
+
