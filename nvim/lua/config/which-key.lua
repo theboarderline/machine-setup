@@ -137,7 +137,9 @@ wk.setup {
       u = { "<cmd>Lazy update<cr>", "Update", mode = { "n", "v" } },
     },
 
-    m = {
+    m = { "<cmd>Telescope make<cr>", "Make", mode = { "n", "v" } },
+
+    M = {
       name = "Markdown",
       e = { "<cmd>MdEval<cr>", "Evaludate code block", mode = { "n" }},
       m = { "<cmd>MarkmapOpen<cr>", "Open Mindmap", mode = { "n" }},

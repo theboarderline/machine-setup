@@ -82,7 +82,7 @@ local plugin_specs = {
   {
     'sopa0/telescope-makefile',
     config = function()
-      require'telescope'.load_extension('make')
+      require('telescope').load_extension('make')
     end
   },
 
