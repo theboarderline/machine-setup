@@ -171,6 +171,7 @@ wk.setup {
       name = "Terminal",
       f = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=15 direction=float<cr>", "Floating", mode = { "n", "v" } },
       h = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=15 direction=horizontal<cr>", "Horizontal", mode = { "n", "v" } },
+      t = { "<cmd>Dotenv<CR><cmd>ToggleTerm direction=tab<cr>", "Tab", mode = { "n", "v" } },
       v = { "<cmd>Dotenv<CR><cmd>ToggleTerm size=70 direction=vertical<cr>", "Vertical", mode = { "n", "v" } },
     },
 

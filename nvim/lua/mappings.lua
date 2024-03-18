@@ -4,6 +4,7 @@ local uv = vim.loop
 
 -- Cmdline prompt
 keymap.set({ "n", "v", "i", "x" }, ":", "<cmd>FineCmdline<CR>", { desc = "command line prompt" })
+keymap.set({ "n", "v", "i", "x" }, ";", "<cmd>FineCmdline<CR>", { desc = "command line prompt" })
 
 -- ToggleTerm
 keymap.set({ "n", "i", "v", "t"  }, "<c-\\>", "<cmd>ToggleTerm<CR>", { desc = "toggle terminal" })
@@ -50,17 +51,16 @@ keymap.set("n", "]Q", "<cmd>clast<CR>zv", { silent = true, desc = "last qf item"
 -- Comment out current line
 -- keymap.set({ "n" }, "<C-c>", "Vgc", { desc = "comment out current line" })
 
--- Save key strokes (now we do not need to press shift to enter command mode).
-keymap.set({ "n", "x" }, ";", ":")
-
 -- Close location list or quickfix list if they are present, see https://superuser.com/q/355325/736190
 keymap.set("n", [[\x]], "<cmd>windo lclose <bar> cclose <CR>", {
   silent = true,
   desc = "close qf and location list",
 })
 
+keymap.set({ "n", "i", "v" }, "<c-space>", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
+
 -- Delete a buffer, without closing the window, see https://stackoverflow.com/q/4465095/6064933
-keymap.set("n", [[<space>d]], "<cmd>bd<CR>", {
+keymap.set("n", [[<space>c]], "<cmd>bd<CR>", {
   silent = true,
   desc = "delete buffer",
 })

@@ -692,6 +692,14 @@ local plugin_specs = {
     end
   },
 
+  -- File Transfer
+  {
+    "coffebar/transfer.nvim",
+    lazy = true,
+    cmd = { "TransferInit", "DiffRemote", "TransferUpload", "TransferDownload", "TransferDirDiff", "TransferRepeat" },
+    opts = {},
+  },
+
   -- Need to upgrade to 0.10.0
   -- Dropdown menus
   -- {
