@@ -1,9 +1,115 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-alias h='hstr'
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+zstyle :omz:plugins:iterm2 shell-integration yes
+
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git branch iterm2 fzf kubectl kubectx macos vi-mode battery)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+
+# Compilation flags
+# export ARCHFLAGS="-arch $(uname -m)"
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export OPENAI_API_KEY=''
+
+alias bu='brew update && brew upgrade'
+
 alias lg='lazygit'
 
+alias pi='ssh walker@raspberrypi.local'
+alias pi2='ssh walker@raspberrypi2.local'
+alias pi3='ssh walker@raspberrypi3.local'
+alias pi4='ssh walker@raspberrypi4.local'
+alias pi0='ssh walker@raspberrypi0.local'
+
 # Ssh file manipulations
-alias pix='gcloud config set account walker.obrien@pixovr.com; cp ~/.ssh/id_rsa.pixo ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.pixo ~/.ssh/id_rsa.pub'
+alias a42='gcloud config set account walker.obrien@apex42.ai; cp ~/.ssh/id_rsa.a42 ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.a42 ~/.ssh/id_rsa.pub'
 alias wob='gcloud config set account wnobrien@lakegames.us; cp ~/.ssh/id_rsa.wob ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.wob ~/.ssh/id_rsa.pub'
 
 alias getpub='cat ~/.ssh/id_rsa.pub'
@@ -12,17 +118,12 @@ function cleanImages {
   for x in `docker images | awk '{print $3}'`; do docker image rm $x --force ; done
 }
 
-alias ss='source ./bin/env.sh'
-
 alias weather='curl wttr.in/chicago'
 
 alias gg='go get'
 alias gmt='go mod tidy'
 alias gmd='go mod download'
 
-
-alias cluster-d='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project d-platform-gke-project-hsw'
-alias cluster-p='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project p-platform-gke-project-qjo'
 
 alias ls='ls -aG'
 alias lss='ls -alhSG'
@@ -46,6 +147,7 @@ alias rss='python manage.py runserver'
 alias ys='yarn start'
 alias yi='yarn ios'
 
+alias venv='source venv/bin/activate'
 alias env='source env/bin/activate'
 alias deac='deactivate'
 alias cmod='chmod +x ./bin/*'
@@ -53,55 +155,46 @@ alias cmod='chmod +x ./bin/*'
 alias sv='source ~/.vimrc'
 alias sb='source ~/.zshrc'
 alias sp='source ~/.zprofile'
-
+alias sps='source ~/.p10k.zsh'
 
 alias vimv="$EDITOR ~/.vimrc; source ~/.vimrc"
 alias vimb="$EDITOR ~/.zshrc; source ~/.zshrc"
+alias vimby="$EDITOR ~/.byobu"
 alias vimp="$EDITOR ~/.zprofile; source ~/.zprofile"
-alias vimz="$EDITOR ~/.config/starship.toml"
 alias vimc="$EDITOR ~/.config/nvim"
+alias vimps="$EDITOR ~/.p10k.zsh; source ~/.p10k.zsh"
 
 
 alias tf='terraform'
 alias tff='terraform fmt'
 alias tfi='terraform init'
 alias tfv='terraform validate'
-
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+alias tfaa='terraform apply -auto-approve'
 
 alias k='kubectl'
-alias kcsc='kubectl config set-context --current --namespace'
+alias kc="kubectl config use-context"
+alias kn='kubectl config set-context --current --namespace'
 alias ktx='kubectx'
-
-alias kgaa='kgp -A | grep nginx-dep; kgp -A | grep api-dep'
 
 alias kg='kubectl get'
 alias kd='kubectl describe'
 alias kl='kubectl logs'
 alias ka='kubectl apply -f'
 alias ke='kubectl exec -it'
+alias kp='kubectl port-forward'
 
 alias kdn='kd nodes'
 alias kdp='kd pods'
 alias kds='kd svc'
 alias kdi='kd ingress'
-alias kdm='kd managedcertificate'
-alias kdc='kd ciliumnetworkpolicy'
-alias kde='kd externalsecrets'
-alias kdip='kd computeaddress'
-alias kdz='kd dnsmanagedzone'
-alias kdr='kd dnsrecordset'
 
-alias kga='kg all,ingress,managedcertificate,cloudbuildtrigger,computeaddress,dnsrecordset,storagebucket,artifactregistryrepository'
+alias kga='kg all,ingress'
 alias kgp='kg pods'
 alias kgs='kg svc'
 alias kgn='kg nodes'
 alias kgi='kg ingress'
-alias kgm='kg managedcertificate'
-alias kgc='kg ciliumnetworkpolicy'
-alias kge='kg externalsecrets'
-alias kgip='kg computeaddress'
-alias kgz='kg dnsmanagedzone'
-alias kgr='kg dnsrecordset'
 
 # Git shortcuts
 alias gs='git status'
@@ -115,38 +208,13 @@ alias gpt='gpp && git push --tags'
 
 
 # Kubectl Configurations
-source <(kubectl completion bash)
 source <(kubectl completion zsh)
-
-complete -F __start_kubectl k
 
 source ~/.iterm2_shell_integration.zsh
 
-autoload -Uz compinit
-compinit
-
-eval "$(starship init zsh)"
-eval $(twilio autocomplete:script zsh)
-
-export PATH=$PATH:$(go env GOPATH)/bin
-
+export PATH=$PATH:$(go env GOPATH)/bin:$HOME/go/bin
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-
-
-
-eval "$(zoxide init zsh --cmd cd)"
-
-function z {
-  cd "$(zoxide query "$@")"
-}
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
-export PATH=$PATH:$(go env GOPATH)/bin
-
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/walkerobrien/.rd/bin:$PATH"
@@ -159,3 +227,35 @@ if [ -f '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/wa
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc'; fi
 
+export PATH=/Users/walkerobrien/.groundcover/bin:${PATH}
+
+### SSH - Local Clusters
+alias c1='ssh walker@controller1.local'
+alias c2='ssh walker@controller2.local'
+alias n1='ssh walker@node1.local'
+alias n2='ssh walker@node2.local'
+alias n3='ssh walker@node3.local'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+alias cluster-d='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project d-platform-gke-project-hsw'
+alias cluster-p='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project p-platform-gke-project-qjo'
+
+declare -A K8S_CLUSTER_ALIASES=(
+  "gke_d-platform-gke-project-hsw_us-central1-a_central-cluster" "dev-gke"
+  "gke_p-platform-gke-project-qjo_us-central1-a_central-cluster" "prod-gke"
+)
+
+function kube_ps1() {
+  local context=$(kubectl config current-context 2>/dev/null)
+  local namespace=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
+  if [ $? -eq 0 ]; then
+    local alias="${K8S_CLUSTER_ALIASES[$context]:-$context}" # Use alias if available
+    namespace=${namespace:-default} # Fallback to 'default' if namespace is empty
+    echo -n "⎈ $alias/$namespace"
+  fi
+}
+
+autoload bashcompinit && bashcompinit
+source $(brew --prefix)/etc/bash_completion.d/az

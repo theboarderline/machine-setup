@@ -8,6 +8,8 @@
 **/service-accounts/
 **/.DS_Store
 
+**/.undo
+
 envs/gcp.sh
 
 **/Chart.lock

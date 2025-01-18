@@ -1,10 +1,4 @@
-unbind-key -n C-a
 set -g prefix2 F12
-
-unbind-key -n C-r
-unbind-key -n C-e
-unbind -n C-r
-unbind -n C-e
 
 # unbind-key -n M-Right
 # unbind-key -n M-Left
