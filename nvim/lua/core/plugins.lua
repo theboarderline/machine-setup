@@ -37,7 +37,7 @@ local plugin_specs = {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("core.config.nvim-tree")
+      require("config.nvim-tree")
     end,
   },
 
@@ -56,19 +56,7 @@ local plugin_specs = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      require("core.config.treesitter")
-    end,
-  },
-
-  -- LSP
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      local lspconfig = require("lspconfig")
-      -- Example LSP servers
-      -- lspconfig.lua_ls.setup{}
-      -- lspconfig.pyright.setup{}
-      -- ...
+      require("config.treesitter")
     end,
   },
 
@@ -81,43 +69,11 @@ local plugin_specs = {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets"
     },
     config = function()
-      local cmp = require("cmp")
-      local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        mapping = {
-          ["<Tab>"] = cmp.mapping.select_next_item(),
-          ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        },
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-        }, {
-          { name = "buffer" },
-          { name = "path" },
-        }),
-      })
-
-      -- Example: attach capabilities to a server
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-          },
-        },
-      })
+      require("config.cmp")
     end,
   },
 
@@ -127,7 +83,7 @@ local plugin_specs = {
     version = "0.1.x",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("core.config.telescope")
+      require("config.telescope")
     end,
   },
 
@@ -139,7 +95,7 @@ local plugin_specs = {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("core.config.bufferline")
+      require("config.bufferline")
     end,
   },
 
@@ -182,7 +138,7 @@ local plugin_specs = {
     "vuki656/package-info.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     config = function()
-      require('core.config.package-info')
+      require('config.package-info')
     end
   },
 
@@ -194,7 +150,7 @@ local plugin_specs = {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
     config = function()
-      require("core.config.nvim-notify")
+      require("config.nvim-notify")
     end,
   },
 
@@ -214,7 +170,7 @@ local plugin_specs = {
     'akinsho/toggleterm.nvim',
     version = "*",
     config = function()
-      require("core.config.toggleterm")
+      require("config.toggleterm")
     end
   },
 
@@ -224,7 +180,7 @@ local plugin_specs = {
     event = "VeryLazy",
     cond = firenvim_not_active,
     config = function()
-      require("core.config.statusline")
+      require("config.statusline")
     end
   },
 
@@ -275,10 +231,10 @@ local plugin_specs = {
         },
         -- stylua: ignore
         keys = {
-          { "<leader>di", function() require("dapui").toggle({}) end, desc = "Dap UI" },
+          { ",di", function() require("dapui").toggle({}) end, desc = "Dap UI" },
 
           {
-            "<leader>de",
+            ",de",
             function()
               -- Calling this twice to open and jump into the window.
               require('dapui').eval()
@@ -328,25 +284,26 @@ local plugin_specs = {
           dapui.setup(opts)
         end
       },
+
       -- mason.nvim integration
-      -- {
-      --   "jay-babu/mason-nvim-dap.nvim",
-      --   dependencies = "mason.nvim",
-      --   cmd = { "DapInstall", "DapUninstall" },
-      --   opts = {
-      --     -- Makes a best effort to setup the various debuggers with
-      --     -- reasonable debug configurations
-      --     automatic_setup = true,
-      --     -- You can provide additional configuration to the handlers,
-      --     -- see mason-nvim-dap README for more information
-      --     handlers = {},
-      --     -- You'll need to check that you have the required things installed
-      --     -- online, please don't ask me how to install them :)
-      --     ensure_installed = {
-      --       -- Update this to ensure that you have the debuggers for the langs you want
-      --     },
-      --   },
-      -- },
+      {
+        "jay-babu/mason-nvim-dap.nvim",
+        dependencies = "mason.nvim",
+        cmd = { "DapInstall", "DapUninstall" },
+        opts = {
+          -- Makes a best effort to setup the various debuggers with
+          -- reasonable debug configurations
+          automatic_setup = true,
+          -- You can provide additional configuration to the handlers,
+          -- see mason-nvim-dap README for more information
+          handlers = {},
+          -- You'll need to check that you have the required things installed
+          -- online, please don't ask me how to install them :)
+          ensure_installed = {
+            -- Update this to ensure that you have the debuggers for the langs you want
+          },
+        },
+      },
 
       -- JS/TS debugging.
       {
@@ -359,13 +316,14 @@ local plugin_specs = {
         },
 
       },
+
       -- Lua adapter.
       {
         "jbyuki/one-small-step-for-vimkind",
         -- stylua: ignore
         keys = {
-          { "<leader>daL", function() require("osv").launch({ port = 8086 }) end, desc = "Adapter Lua Server" },
-          { "<leader>dal", function() require("osv").run_this() end,              desc = "Adapter Lua" },
+          { ",daL", function() require("osv").launch({ port = 8086 }) end, desc = "Adapter Lua Server" },
+          { ",dal", function() require("osv").run_this() end,              desc = "Adapter Lua" },
         },
         config = function()
           local dap = require("dap")
@@ -411,7 +369,7 @@ local plugin_specs = {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-      require("core.config.go")
+      require("config.go")
     end,
     event = {"CmdlineEnter"},
     ft = {"go", 'gomod'},
@@ -423,7 +381,7 @@ local plugin_specs = {
     "andythigpen/nvim-coverage",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("core.config.coverage")
+      require("config.coverage")
     end
   },
 
@@ -435,7 +393,7 @@ local plugin_specs = {
     "nvimdev/dashboard-nvim",
     cond = firenvim_not_active,
     config = function()
-      require("core.config.dashboard-nvim")
+      require("config.dashboard-nvim")
     end,
   },
 
@@ -447,7 +405,7 @@ local plugin_specs = {
     "gbprod/yanky.nvim",
     cmd = { "YankyRingHistory" },
     config = function()
-      require("core.config.yanky")
+      require("config.yanky")
     end,
   },
 
@@ -455,7 +413,7 @@ local plugin_specs = {
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require("core.config.gitsigns")
+      require("config.gitsigns")
     end,
   },
 
@@ -463,7 +421,7 @@ local plugin_specs = {
   {
     "hsalem7/nvim-k8s",
     config = function()
-      vim.g.vim_k8s_toggle_key_map = '<leader>k'
+      vim.g.vim_k8s_toggle_key_map = ',k'
     end
   },
 
@@ -525,7 +483,7 @@ local plugin_specs = {
     "VonHeikemen/fine-cmdline.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     config = function()
-      require("core.config.fine-cmdline")
+      require("config.fine-cmdline")
     end
   },
 
@@ -540,7 +498,7 @@ local plugin_specs = {
     },
     event = "VeryLazy",
     config = function()
-      require("core.config.chatgpt")
+      require("config.chatgpt")
     end,
   },
 
@@ -549,7 +507,7 @@ local plugin_specs = {
     "folke/which-key.nvim",
     event = "VeryLazy",
     config = function()
-      require("core.config.which-key")
+      require("config.which-key")
     end,
   },
 
@@ -565,6 +523,121 @@ local plugin_specs = {
 
   -- Github Copilot
   { 'github/copilot.vim' },
+
+  -- LSP
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("lspconfig")
+    end,
+  },
+
+  -- LSPKind for showing icons in completion
+  {
+    "onsails/lspkind-nvim",
+    event = "VeryLazy",
+    config = function()
+      require("config.lspkind")
+    end,
+  },
+
+  -- Mason for managing external editor tooling
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("config.mason")
+    end,
+  },
+
+  -- Mason LSPconfig to bridge mason and lspconfig
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+  },
+
+  -- Additional Plugins (e.g., rust-tools)
+  {
+    "simrat39/rust-tools.nvim",
+    ft = "rust",
+    config = function()
+      require("rust-tools").setup({
+        server = {
+          on_attach = require("core.config.lsp").on_attach,
+          capabilities = require("core.config.lsp").capabilities,
+          settings = {
+            ["rust-analyzer"] = {
+              assist = {
+                importMergeBehavior = "last",
+                importPrefix = "by_self",
+              },
+              cargo = {
+                loadOutDirsFromCheck = true,
+              },
+              procMacro = {
+                enable = true,
+              },
+            },
+          },
+        },
+      })
+    end,
+  },
+
+  --- Typescript lsp tools
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    config = function()
+      require("config.tstools")
+    end,
+    opts = {},
+  },
+
+  -- helm.vim for Helm syntax
+  {
+    "towolf/vim-helm",
+    ft = { "helm", "yaml" },
+  },
+
+  -- Handy unix command inside Vim (Rename, Move etc.)
+  { "tpope/vim-eunuch", cmd = { "Rename", "Delete" } },
+
+  -- Grammar checker
+  {
+    "rhysd/vim-grammarous",
+    enabled = function()
+      if vim.g.is_mac then
+        return true
+      end
+      return false
+    end,
+    ft = { "markdown" },
+  },
+
+
+  -- Plugin to manipulate character pairs quickly
+  { "machakann/vim-sandwich", event = "VeryLazy" },
+
+  -- Show logical map of readme contents
+  {
+    "Zeioth/markmap.nvim",
+    build = "yarn global add markmap-cli",
+    cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
+    opts = {
+      html_output = "/tmp/markmap.html", -- (default) Setting a empty string "" here means: [Current buffer path].html
+      hide_toolbar = false, -- (default)
+      grace_period = 3600000 -- (default) Stops markmap watch after 60 minutes. Set it to 0 to disable the grace_period.
+    },
+    config = function(_, opts) require("markmap").setup(opts) end
+  },
+
+  -- Evaluate commands in markdown
+  {
+    "jubnzv/mdeval.nvim",
+    config = function()
+      require("config.mdeval")
+    end
+  },
 
 }
 

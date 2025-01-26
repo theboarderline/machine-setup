@@ -4,7 +4,7 @@ map({ "n", "v", "x" }, ":", "<cmd>FineCmdline<CR>", opts("open command line prom
 map({ "n", "v", "x" }, ";", "<cmd>FineCmdline<CR>", opts("open command line prompt"))
 
 -- JK to enter command mode
-map("i", "jk", "<Esc>", opts("Enter command mode"))
+map({"i", "t"}, "jk", "<Esc>", opts("Enter command mode"))
 
 -- Clear search highlighting
 map("n", "<leader>h", ":noh<CR>", opts("Clear search highlight"))
@@ -12,7 +12,7 @@ map("n", "<leader>h", ":noh<CR>", opts("Clear search highlight"))
 -- Saves the file
 map("n", "<leader>w", ":w<CR>", opts("Save file"))
 
--- Save and Delete buffer
+-- Delete current buffer
 map({"n", "v"}, "<leader>d", ":Bdelete<CR>", opts("delete current buffer"))
 
 -- Quit all opened buffers
@@ -26,8 +26,8 @@ map("n", "<C-l>", "<C-w>l", opts("move window right"))
 map("n", "<leader><leader>", "<cmd>StripTrailingWhitespace<CR>", opts("remove trailing space"))
 
 -- Move current line up and down
-map("n", "<C-j>", 'ddp', opts("move line down"))
-map("n", "<C-k>", 'ddkkp', opts("move line up"))
+map("n", "<C-j>", "V:move '>+1<CR>gv-gv<Esc>", opts("move line down"))
+map("n", "<C-k>", "V:move '<-2<CR>gv-gv<Esc>", opts("move line up"))
 
 -- Move highlighted lines up and down
 map("x", "J", ":move '>+1<CR>gv-gv")
@@ -38,9 +38,6 @@ map("n", "<C-i>", ":resize -3<CR>")
 map("n", "<C-m>", ":resize +3<CR>")
 map("n", "<C-u>", ":vertical resize -3<CR>")
 map("n", "<S-u>", ":vertical resize +3<CR>")
-
--- Open LazyGit
-map({"n", "v"}, "<leader>g", "<cmd>LazyGit<CR>", opts("open lazygit window"))
 
 -- Do not move cursor when joining lines.
 map("n", "J", function()

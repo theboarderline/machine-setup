@@ -72,7 +72,13 @@ nvim_tree.setup {
   filters = {
     dotfiles = false,
     custom = {},
-    exclude = { "node_modules", "__pycache__", ".idea", ".vscode", "cover.out" },
+    exclude = {
+      "node_modules",
+      "__pycache__",
+      ".idea",
+      ".vscode",
+      "cover.out"
+    },
   },
   git = {
     enable = true,
