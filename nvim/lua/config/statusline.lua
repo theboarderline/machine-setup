@@ -290,30 +290,10 @@ local function setup_lualine()
   }
 end
 
--- Bufferline Keybindings
-local function setup_bufferline_keymaps()
-  -- Go to next/previous buffer
-  map("n", "<S-l>", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
-  map("n", "<S-h>", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
-
-  -- Move buffer position left/right
-  map("n", "<leader><S-h>", ":BufferLineMovePrev<CR>", { desc = "Move buffer left" })
-  map("n", "<leader><S-l>", ":BufferLineMoveNext<CR>", { desc = "Move buffer right" })
-
-  -- Pick buffer by number (1-9)
-  -- e.g., <leader>1 -> first buffer, <leader>2 -> second, etc.
-  for i = 1, 9 do
-    map("n", "<leader>" .. i, function()
-      require("bufferline").go_to_buffer(i, true)
-    end, { desc = "Go to buffer " .. i })
-  end
-end
-
 -- Initialize all configurations
 local function setup_all()
   setup_bufferline()
   setup_lualine()
-  setup_bufferline_keymaps()
 end
 
 return {

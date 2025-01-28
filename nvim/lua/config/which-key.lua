@@ -92,7 +92,7 @@ wk.setup {
 
     g = {
       name = "Go",
-      g = { '<cmd>lua require("go.format").gofmt()<CR><cmd>lua require("go.format").goimports()<CR>', "Format", mode = { "n", "v" } },
+      g = { "<cmd>GoSave<CR>", "Format and Imports", mode = { "n", "v" } },
       b = { "<cmd>GoBreakToggle<CR>", "Toggle Breakpoint", mode = { "n", "v" } },
       B = { "<cmd>BreakCondition<CR>", "Conditional Breakpoint", mode = { "n", "v" } },
       c = { "<cmd>GoCoverage<CR>", "Tests with Coverage", mode = { "n", "v" } },

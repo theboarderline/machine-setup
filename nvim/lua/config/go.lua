@@ -16,7 +16,7 @@ require('go').setup({
                    -- false: do nothing
                    -- if lsp_cfg is a table, merge table with with non-default gopls setup in go/lsp.lua, e.g.
                    --   lsp_cfg = {settings={gopls={matcher='CaseInsensitive', ['local'] = 'your_local_module_path', gofumpt = true }}}
-  lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
+  lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
   lsp_on_attach = nil, -- nil: use on_attach function defined in go/lsp.lua,
                        --      when lsp_cfg is true
                        -- if lsp_on_attach is a function: use this function as on_attach function for gopls
@@ -109,5 +109,24 @@ require('go').setup({
   on_exit = function(code, signal, output)  _, _, _ = code, signal, output  end, -- callback for jobexit, output : string
   iferr_vertical_shift = 4 -- defines where the cursor will end up vertically from the begining of if err statement
 })
+
+local function run_formatters()
+  local fmt = require("go.format")
+  if fmt and fmt.goimports then
+    vim.notify("Updating imports...", vim.log.levels.INFO)
+    fmt.goimports()
+  else
+    vim.notify("go.format.goimports() not found!", vim.log.levels.ERROR)
+  end
+
+  if fmt and fmt.gofmt then
+    vim.notify("Formatting code...", vim.log.levels.INFO)
+    fmt.gofmt()
+  else
+    vim.notify("go.format.gofmt() not found!", vim.log.levels.ERROR)
+  end
+end
+
+usercmd('GoSave', run_formatters, { desc = "Format file and update imports" })
 
 

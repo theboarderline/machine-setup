@@ -3,8 +3,11 @@
 map({ "n", "v", "x" }, ":", "<cmd>FineCmdline<CR>", opts("open command line prompt"))
 map({ "n", "v", "x" }, ";", "<cmd>FineCmdline<CR>", opts("open command line prompt"))
 
--- JK to enter command mode
+-- JK to enter Normal mode
 map({"i", "t"}, "jk", "<Esc>", opts("Enter command mode"))
+
+-- <C-j> to enter Normal mode in terminal
+nmap('t', '<C-j>', [[<C-\><C-n>]], opts("Switch to Normal Mode"))
 
 -- Clear search highlighting
 map("n", "<leader>h", ":noh<CR>", opts("Clear search highlight"))
@@ -23,7 +26,7 @@ map("n", "<C-h>", "<C-w>h", opts("move window left"))
 map("n", "<C-l>", "<C-w>l", opts("move window right"))
 
 -- Remove trailing whitespace
-map("n", "<leader><leader>", "<cmd>StripTrailingWhitespace<CR>", opts("remove trailing space"))
+map("n", "<Space><Space>", "<cmd>StripTrailingWhitespace<CR>", opts("remove trailing space"))
 
 -- Move current line up and down
 map("n", "<C-j>", "V:move '>+1<CR>gv-gv<Esc>", opts("move line down"))

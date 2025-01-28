@@ -59,5 +59,15 @@ require("bufferline").setup {
     enforce_regular_tabs = false,
     always_show_bufferline = true,
     sort_by = "id",
+    -- Customize buffer icons based on buffer type
+    custom_areas = {
+      right = function(bufnr)
+        local buftype = vim.api.nvim_buf_get_option(bufnr, "buftype")
+        if buftype == "terminal" then
+          return { { text = "  " } } -- Terminal icon
+        end
+        return {}
+      end
+    },
   },
 }
