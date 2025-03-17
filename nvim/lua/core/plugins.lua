@@ -438,10 +438,10 @@ local plugin_specs = {
   { "jeetsukumaran/vim-pythonsense", ft = { "python" } },
 
   -- coc
-  {
-    "neoclide/coc.nvim",
-    build = "npm ci",
-  },
+  -- {
+  --   "neoclide/coc.nvim",
+  --   build = "npm ci",
+  -- },
 
   -- Plugin to manipulate character pairs quickly
   { "machakann/vim-sandwich", event = "VeryLazy" },
@@ -523,6 +523,7 @@ local plugin_specs = {
     "neovim/nvim-lspconfig",
     config = function()
       require("lspconfig")
+      require("config.lsp")
     end,
   },
 
@@ -632,6 +633,9 @@ local plugin_specs = {
       require("config.mdeval")
     end
   },
+
+  -- CSV Files - messes up coc ?
+  { "mechatroner/rainbow_csv" },
 
 }
 
