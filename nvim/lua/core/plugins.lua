@@ -446,6 +446,9 @@ local plugin_specs = {
   -- Plugin to manipulate character pairs quickly
   { "machakann/vim-sandwich", event = "VeryLazy" },
 
+  -- Illuminate
+  { "RRethy/vim-illuminate" },
+
   -- Markdown
   {
     "toppair/peek.nvim",

@@ -66,6 +66,7 @@
   "vim-grammarous": { "branch": "master", "commit": "db46357465ce587d5325e816235b5e92415f8c05" },
   "vim-helm": { "branch": "master", "commit": "ae1ebc160d2b9b90108477ab10df7a4fc501e358" },
   "vim-highlighturl": { "branch": "master", "commit": "7179156ccc68168e7ef8f1eae28edf36911f5a3c" },
+  "vim-illuminate": { "branch": "master", "commit": "19cb21f513fc2b02f0c66be70107741e837516a1" },
   "vim-python-pep8-indent": { "branch": "master", "commit": "60ba5e11a61618c0344e2db190210145083c91f8" },
   "vim-pythonsense": { "branch": "master", "commit": "9200a57629c904ed2ab8c9b2e8c5649d311794ba" },
   "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" },
