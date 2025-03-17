@@ -438,10 +438,10 @@ local plugin_specs = {
   { "jeetsukumaran/vim-pythonsense", ft = { "python" } },
 
   -- coc
-  -- {
-  --   "neoclide/coc.nvim",
-  --   build = "npm ci",
-  -- },
+  {
+    "neoclide/coc.nvim",
+    build = "npm ci",
+  },
 
   -- Plugin to manipulate character pairs quickly
   { "machakann/vim-sandwich", event = "VeryLazy" },
