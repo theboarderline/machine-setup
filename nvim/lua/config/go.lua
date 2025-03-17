@@ -1,5 +1,4 @@
 require('go').setup({
-
   disable_defaults = false, -- true|false when true set false to all boolean settings and replace all table
   -- settings with {}
   go='go', -- go command, can be go[default] or go1.18beta1
@@ -12,7 +11,7 @@ require('go').setup({
   comment_placeholder = '' ,  -- comment_placeholder your cool placeholder e.g. 󰟓       
   icons = {breakpoint = '🔴', currentpos = '➡️'},  -- setup to `false` to disable icons setup
   verbose = false,  -- output loginf in messages
-  lsp_cfg = false, -- true: use non-default gopls setup specified in go/lsp.lua
+  lsp_cfg = true, -- true: use non-default gopls setup specified in go/lsp.lua
                    -- false: do nothing
                    -- if lsp_cfg is a table, merge table with with non-default gopls setup in go/lsp.lua, e.g.
                    --   lsp_cfg = {settings={gopls={matcher='CaseInsensitive', ['local'] = 'your_local_module_path', gofumpt = true }}}
@@ -20,7 +19,7 @@ require('go').setup({
   lsp_on_attach = nil, -- nil: use on_attach function defined in go/lsp.lua,
                        --      when lsp_cfg is true
                        -- if lsp_on_attach is a function: use this function as on_attach function for gopls
-  lsp_keymaps = true, -- set to false to disable gopls/lsp keymap
+  lsp_keymaps = false, -- set to false to disable gopls/lsp keymap
   lsp_codelens = true, -- set to false to disable codelens, true by default, you can use a function
   -- function(bufnr)
   --    vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", {noremap=true, silent=true})

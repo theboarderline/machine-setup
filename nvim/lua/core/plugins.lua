@@ -462,13 +462,7 @@ local plugin_specs = {
   {
     "nguyenvukhang/nvim-toggler",
     config = function()
-      require('nvim-toggler').setup({
-        inverses = {
-          ['!=='] = '==='
-        },
-        remove_default_keybinds = false,
-        remove_default_inverses = false,
-      })
+      require("config.toggler")
     end
   },
 

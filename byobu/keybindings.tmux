@@ -7,14 +7,14 @@ bind y set-window-option synchronize-panes
 
 # Make splitting panes more intuitive
 bind v split-window -h -c "#{pane_current_path}"
-bind b split-window -v -c "#{pane_current_path}"
+bind h split-window -v -c "#{pane_current_path}"
 
 # These bindings allow you to stay in your keyboard's home
 # row when moving between panes. Assuming, of course, that
 # you've swapped your Ctrl and Caps Lock keys which you should!
 bind h select-pane -L
 bind j select-pane -D
-bind k select-pane -U
+bind K select-pane -U
 bind l select-pane -R
 
 # Resize panes using the home row too!

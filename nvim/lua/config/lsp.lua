@@ -1,4 +1,12 @@
 
+-- For a local 'BufEnter' or 'FileType go' autocmd:
+autocmd("FileType", {
+  pattern = "go",
+  callback = function()
+    vim.api.nvim_buf_del_keymap(0, "n", "<leader>e")
+    vim.api.nvim_buf_set_keymap(0, "n", "<leader>e", ":NvimTreeToggle<CR>", { noremap=true, silent=true })
+  end,
+})
 
 local M = {}
 
@@ -10,9 +18,9 @@ M.on_attach = function(client, bufnr)
   local set_keymap = vim.api.nvim_buf_set_keymap
 
   -- LSP Keymaps
-  set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  set_keymap(bufnr, 'n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  set_keymap(bufnr, 'n', '<leader>i', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   set_keymap(bufnr, 'n', '<leader>k', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   set_keymap(bufnr, 'n', '<leader>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   set_keymap(bufnr, 'n', '<leader>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
