@@ -437,12 +437,6 @@ local plugin_specs = {
   -- Python-related text object
   { "jeetsukumaran/vim-pythonsense", ft = { "python" } },
 
-  -- coc
-  {
-    "neoclide/coc.nvim",
-    build = "npm ci",
-  },
-
   -- Plugin to manipulate character pairs quickly
   { "machakann/vim-sandwich", event = "VeryLazy" },
 
@@ -637,7 +631,7 @@ local plugin_specs = {
     end
   },
 
-  -- CSV Files - messes up coc ?
+  -- CSV Files
   { "mechatroner/rainbow_csv" },
 
 }

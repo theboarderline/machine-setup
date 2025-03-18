@@ -67,8 +67,29 @@ for _, lsp in ipairs(servers) do
   })
 end
 
+require("lspconfig").terraformls.setup({
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  filetypes = { "terraform", "tf", "hcl", "tfvars" },  -- ensure these are recognized
+  settings = {
+    terraformls = {
+      experimentalFeatures = {
+        validateOnSave = true
+      }
+    }
+  }
+})
+
 -- Define diagnostic signs with icons
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = {
+  Error = " ",  -- ex: \u{f057}
+  Warn  = " ",  -- ex: \u{f071}
+  Hint  = " ",  -- ex: \u{f834}
+  Info  = " ",  -- ex: \u{f05a}
+}
 
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type

@@ -1,7 +1,11 @@
 set -g prefix2 F12
 
-# unbind-key -n M-Right
-# unbind-key -n M-Left
+unbind-key -T root F2
+unbind-key -T root F3
+unbind-key -T root F4
+unbind-key -T root F5
+unbind-key -T root F6
+unbind-key -T root F7
 
 bind y set-window-option synchronize-panes
 
