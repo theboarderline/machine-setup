@@ -4,7 +4,9 @@ local utils = require('core.utils')
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+
 -- General Options
+vim.opt.signcolumn = "yes:2"      -- Show two columns for signs
 vim.opt.number = true             -- Enable line numbers
 vim.opt.relativenumber = true     -- Relative line numbers
 vim.opt.termguicolors = true      -- True color support

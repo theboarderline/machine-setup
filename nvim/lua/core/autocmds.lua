@@ -1,5 +1,15 @@
 local utils = require('core.utils')
 
+-- Show test coverage
+autocmd("BufReadPost", {
+  pattern = "*.go",
+  callback = function()
+    local coverage = require("coverage")
+    coverage.load()
+    coverage.show()
+  end
+})
+
 -- Source .env on startup
 autocmd("VimEnter", {
   pattern = "*",

@@ -12,7 +12,7 @@ require("coverage").setup({
 	},
 	summary = {
 		-- customize the summary pop-up
-		min_coverage = 90.0,      -- minimum coverage threshold (used for highlighting)
+		min_coverage = 100.0,      -- minimum coverage threshold (used for highlighting)
 	},
 	lang = {
 		-- customize language specific settings
