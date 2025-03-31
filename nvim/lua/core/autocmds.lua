@@ -3,11 +3,7 @@ local utils = require('core.utils')
 -- Show test coverage
 autocmd("BufReadPost", {
   pattern = "*.go",
-  callback = function()
-    local coverage = require("coverage")
-    coverage.load()
-    coverage.show()
-  end
+  callback = utils.load_coverage,
 })
 
 -- Source .env on startup

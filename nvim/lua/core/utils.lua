@@ -2,6 +2,14 @@ local fn = vim.fn
 
 local M = {}
 
+-- Load test coverage and show it
+function M.load_coverage()
+  local coverage = require("coverage")
+  coverage.load()
+  coverage.show()
+end
+
+
 function M.executable(name)
   if fn.executable(name) > 0 then
     return true
