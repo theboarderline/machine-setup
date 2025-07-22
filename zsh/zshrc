@@ -5,9 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
 zstyle :omz:plugins:iterm2 shell-integration yes
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -74,8 +71,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -96,21 +91,30 @@ export LC_ALL=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export OPENAI_API_KEY=''
-
 alias bu='brew update && brew upgrade'
 
 alias lg='lazygit'
 
-alias pi='ssh walker@raspberrypi.local'
-alias pi2='ssh walker@raspberrypi2.local'
-alias pi3='ssh walker@raspberrypi3.local'
-alias pi4='ssh walker@raspberrypi4.local'
-alias pi0='ssh walker@raspberrypi0.local'
+alias add-serena='claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena-mcp-server --context ide-assistant --project $(pwd)'
+
+
+
+LAB_IP="192.168.1.199"
+alias ssh-lab='ssh homeassistant@${LAB_IP} -L 8123:localhost:8123'
+
+BRILEY_IP="192.168.1.104"
+alias ssh-briley='ssh brileyobrien@${BRILEY_IP}'
+
+PC_IP="192.168.1.181"
+alias ssh-pc='ssh walker@${LAB_IP}'
+
 
 # Ssh file manipulations
 alias a42='gcloud config set account walker.obrien@apex42.ai; cp ~/.ssh/id_rsa.a42 ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.a42 ~/.ssh/id_rsa.pub'
+alias cws='gcloud config set account walker.obrien@cloudwalksolutions.io; cp ~/.ssh/id_rsa.cws ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.cws ~/.ssh/id_rsa.pub'
 alias wob='gcloud config set account wnobrien@lakegames.us; cp ~/.ssh/id_rsa.wob ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.wob ~/.ssh/id_rsa.pub'
+
+alias g='gemini'
 
 alias getpub='cat ~/.ssh/id_rsa.pub'
 
@@ -142,7 +146,12 @@ alias nv='nvim .'
 alias postgresql='postgresql@14'
 
 alias pip='pip3'
-alias rss='python manage.py runserver'
+alias python='python3'
+alias p='python3'
+alias pm='python3 main.py'
+alias penv='python3 -m venv 2>/dev/null || true; source venv/bin/activate && pip install -r requirements.txt'
+
+alias rss='python3 manage.py runserver'
 
 alias ys='yarn start'
 alias yi='yarn ios'
@@ -156,6 +165,7 @@ alias sv='source ~/.vimrc'
 alias sb='source ~/.zshrc'
 alias sp='source ~/.zprofile'
 alias sps='source ~/.p10k.zsh'
+alias sbs='source ~/.zshrc.secret'
 
 alias vimv="$EDITOR ~/.vimrc; source ~/.vimrc"
 alias vimb="$EDITOR ~/.zshrc; source ~/.zshrc"
@@ -163,7 +173,7 @@ alias vimby="$EDITOR ~/.byobu"
 alias vimp="$EDITOR ~/.zprofile; source ~/.zprofile"
 alias vimc="$EDITOR ~/.config/nvim"
 alias vimps="$EDITOR ~/.p10k.zsh; source ~/.p10k.zsh"
-
+alias vimbs="$EDITOR ~/.zshrc.secret; source ~/.zshrc.secret"
 
 alias tf='terraform'
 alias tff='terraform fmt'
@@ -208,35 +218,12 @@ alias gpt='gpp && git push --tags'
 
 
 # Kubectl Configurations
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 
 source ~/.iterm2_shell_integration.zsh
 
-export PATH=$PATH:$(go env GOPATH)/bin:$HOME/go/bin
-
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc'; fi
-
-export PATH=/Users/walkerobrien/.groundcover/bin:${PATH}
-
-### SSH - Local Clusters
-alias c1='ssh walker@controller1.local'
-alias c2='ssh walker@controller2.local'
-alias n1='ssh walker@node1.local'
-alias n2='ssh walker@node2.local'
-alias n3='ssh walker@node3.local'
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-alias cluster-d='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project d-platform-gke-project-hsw'
-alias cluster-p='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project p-platform-gke-project-qjo'
 
 declare -A K8S_CLUSTER_ALIASES=(
   "gke_d-platform-gke-project-hsw_us-central1-a_central-cluster" "dev-gke"
@@ -253,9 +240,30 @@ function kube_ps1() {
   fi
 }
 
+alias cluster-d='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project d-platform-gke-project-hsw'
+alias cluster-p='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project p-platform-gke-project-qjo'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 autoload bashcompinit && bashcompinit
 source $(brew --prefix)/etc/bash_completion.d/az
+
+export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$PATH:$(go env GOPATH)/bin:$HOME/go/bin
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH=/Users/walkerobrien/.groundcover/bin:${PATH}
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/walkerobrien/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/walkerobrien/.lmstudio/bin"
+# End of LM Studio CLI section

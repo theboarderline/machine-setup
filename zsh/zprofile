@@ -6,20 +6,22 @@ export PATH='/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/Library/A
 
 . "$HOME/.cargo/env"
 
-export MODULAR_HOME="$HOME/.modular"
-export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
-
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-source ~/.zshrc
 
 export EDITOR="nvim"
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 fi
 
-# Source env vars if they exist
+source ~/.zshrc > /dev/null 2>&1
+source ~/.zshrc.secret > /dev/null 2>&1
+
 source .env > /dev/null 2>&1
+
+
+
+# Added by Toolbox App
+export PATH="$PATH:/usr/local/bin"
 

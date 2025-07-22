@@ -13,7 +13,7 @@ map('n', '<leader>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
 map('n', '<leader>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
 map('n', '<leader>wl', '<Cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 map('n', '<leader>D', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-map('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+map('n', '<leader>a', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 map('n', '<leader>o', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
 map('n', '<leader>l', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 

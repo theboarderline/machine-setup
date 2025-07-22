@@ -634,6 +634,103 @@ local plugin_specs = {
   -- CSV Files
   { "mechatroner/rainbow_csv" },
 
+  -- AI/Claude Code
+    {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("config.claude-code")
+    end
+  },
+
+  -- {
+  --   "coder/claudecode.nvim",
+  --   dependencies = { "folke/snacks.nvim" },
+  --   config = true,
+  --   keys = {
+  --     { "<leader>c", nil, desc = "AI/Claude Code" },
+  --     { "<leader>cc", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+  --     { "<leader>cf", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+  --     { "<leader>cr", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+  --     { "<leader>cC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+  --     { "<leader>cb", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+  --     { "<leader>cs", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+  --     {
+  --       "<leader>as",
+  --       "<cmd>ClaudeCodeTreeAdd<cr>",
+  --       desc = "Add file",
+  --       ft = { "NvimTree", "neo-tree", "oil" },
+  --     },
+  --     -- Diff management
+  --     { "<leader>ca", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+  --     { "<leader>cd", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+  --   },
+  -- },
+
+  -- Cursor
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    build = "make",
+    opts = {
+      provider = "claude",
+
+      providers = {
+        openai = {
+          endpoint = "https://api.openai.com/v1",
+          model = "gpt-3", -- your desired model (or use gpt-4o, etc.)
+          extra_request_body = {
+            timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+            temperature = 0.75,
+            max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+            reasoning_effort = "high", -- low|medium|high, only used for reasoning models
+          },
+        },
+        claude = {
+          endpoint = "https://api.anthropic.com",
+          model = "claude-3-5-sonnet-20241022",
+          -- model = "claude-3-7-sonnet-20250219",
+          -- model = "claude-opus-4-20250514",
+          extra_request_body = {
+            temperature = 0,
+            max_tokens = 8192,
+          },
+        },
+      }
+    },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "zbirenbaum/copilot.lua",
+      {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  }
+
 }
 
 require("lazy").setup(plugin_specs, lazy_opts)
