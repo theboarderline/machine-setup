@@ -1,8 +1,31 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
+# Zsh profile which gets sourced by .zshrc upon each terminal start
 set -o vi
 
-export PATH='/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/walkerobrien/Desktop/projects/misc/fabric-samples/bin:/sbin:/usr/local/bin/bin'
+# Define the default editor in terminal
+export EDITOR="nvim"
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+fi
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+# Enable iTerm2 shell integration
+source ~/.iterm2_shell_integration.zsh > /dev/null 2>&1
+
+# Homebrew setup
+eval "$(/opt/homebrew/bin/brew shellenv)" > /dev/null 2>&1
+
+autoload bashcompinit && bashcompinit > /dev/null 2>&1
+source $(brew --prefix)/etc/bash_completion.d/az >/dev/null 2>&1
+
+# Kubectl Completions
+source <(kubectl completion zsh) > /dev/null 2>&1
+
+# Set up PATH
+export PATH='/usr/local/bin'
+export PATH='$PATH:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/walkerobrien/Desktop/projects/misc/fabric-samples/bin:/sbin:/usr/local/bin/bin'
+export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$PATH:$(go env GOPATH)/bin:$HOME/go/bin
 
 . "$HOME/.cargo/env"
 
@@ -10,18 +33,18 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-export EDITOR="nvim"
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-fi
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc'; fi
 
-source ~/.zshrc > /dev/null 2>&1
-source ~/.zshrc.secret > /dev/null 2>&1
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc'; fi
 
-source .env > /dev/null 2>&1
+export PATH=/Users/walkerobrien/.groundcover/bin:${PATH}
 
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/walkerobrien/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
-
-# Added by Toolbox App
-export PATH="$PATH:/usr/local/bin"
-
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/walkerobrien/.lmstudio/bin"
+# End of LM Studio CLI section

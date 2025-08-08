@@ -1,3 +1,5 @@
+source ~/.zprofile > /dev/null 2>&1
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -79,186 +81,21 @@ export LC_ALL=en_US.UTF-8
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias bu='brew update && brew upgrade'
-
-alias lg='lazygit'
-
-alias add-serena='claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena-mcp-server --context ide-assistant --project $(pwd)'
-
-
-
-LAB_IP="192.168.1.199"
-alias ssh-lab='ssh homeassistant@${LAB_IP} -L 8123:localhost:8123'
-
-BRILEY_IP="192.168.1.104"
-alias ssh-briley='ssh brileyobrien@${BRILEY_IP}'
-
-PC_IP="192.168.1.181"
-alias ssh-pc='ssh walker@${LAB_IP}'
-
-
-# Ssh file manipulations
-alias a42='gcloud config set account walker.obrien@apex42.ai; cp ~/.ssh/id_rsa.a42 ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.a42 ~/.ssh/id_rsa.pub'
-alias cws='gcloud config set account walker.obrien@cloudwalksolutions.io; cp ~/.ssh/id_rsa.cws ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.cws ~/.ssh/id_rsa.pub'
-alias wob='gcloud config set account wnobrien@lakegames.us; cp ~/.ssh/id_rsa.wob ~/.ssh/id_rsa; cp ~/.ssh/id_rsa.pub.wob ~/.ssh/id_rsa.pub'
-
-alias g='gemini'
-
-alias getpub='cat ~/.ssh/id_rsa.pub'
-
-function cleanImages {
-  for x in `docker images | awk '{print $3}'`; do docker image rm $x --force ; done
+source_if_exists() {
+    local file=$1
+    local message=$2
+    if [[ -f $file ]]; then
+        source "$file"
+    fi
 }
 
-alias weather='curl wttr.in/chicago'
+source_if_exists ~/.zshrc.secret
+source_if_exists ~/.zshrc.funcs
+source_if_exists ~/.zshrc.aliases
+source_if_exists .env
+source_if_exists ./venv/bin/activate
+source_if_exists ~/.p10k.zsh
 
-alias gg='go get'
-alias gmt='go mod tidy'
-alias gmd='go mod download'
-
-
-alias ls='ls -aG'
-alias lss='ls -alhSG'
-
-function ll {
-  cd "$(llama "$@")"
-}
-
-alias l='clear'
-
-alias b='byobu'
-
-alias v='vim .'
-alias nv='nvim .'
-
-alias postgresql='postgresql@14'
-
-alias pip='pip3'
-alias python='python3'
-alias p='python3'
-alias pm='python3 main.py'
-alias penv='python3 -m venv 2>/dev/null || true; source venv/bin/activate && pip install -r requirements.txt'
-
-alias rss='python3 manage.py runserver'
-
-alias ys='yarn start'
-alias yi='yarn ios'
-
-alias venv='source venv/bin/activate'
-alias env='source env/bin/activate'
-alias deac='deactivate'
-alias cmod='chmod +x ./bin/*'
-
-alias sv='source ~/.vimrc'
-alias sb='source ~/.zshrc'
-alias sp='source ~/.zprofile'
-alias sps='source ~/.p10k.zsh'
-alias sbs='source ~/.zshrc.secret'
-
-alias vimv="$EDITOR ~/.vimrc; source ~/.vimrc"
-alias vimb="$EDITOR ~/.zshrc; source ~/.zshrc"
-alias vimby="$EDITOR ~/.byobu"
-alias vimp="$EDITOR ~/.zprofile; source ~/.zprofile"
-alias vimc="$EDITOR ~/.config/nvim"
-alias vimps="$EDITOR ~/.p10k.zsh; source ~/.p10k.zsh"
-alias vimbs="$EDITOR ~/.zshrc.secret; source ~/.zshrc.secret"
-
-alias tf='terraform'
-alias tff='terraform fmt'
-alias tfi='terraform init'
-alias tfv='terraform validate'
-alias tfp='terraform plan'
-alias tfa='terraform apply'
-alias tfaa='terraform apply -auto-approve'
-
-alias k='kubectl'
-alias kc="kubectl config use-context"
-alias kn='kubectl config set-context --current --namespace'
-alias ktx='kubectx'
-
-alias kg='kubectl get'
-alias kd='kubectl describe'
-alias kl='kubectl logs'
-alias ka='kubectl apply -f'
-alias ke='kubectl exec -it'
-alias kp='kubectl port-forward'
-
-alias kdn='kd nodes'
-alias kdp='kd pods'
-alias kds='kd svc'
-alias kdi='kd ingress'
-
-alias kga='kg all,ingress'
-alias kgp='kg pods'
-alias kgs='kg svc'
-alias kgn='kg nodes'
-alias kgi='kg ingress'
-
-# Git shortcuts
-alias gs='git status'
-alias gd='git diff'
-alias gds='git diff --staged'
-alias gss='git status -s'
-alias gaa='git add -A'
-alias gc='git commit -m'
-alias gpp='git fetch; git pull; git push'
-alias gpt='gpp && git push --tags'
-
-
-# Kubectl Configurations
-# source <(kubectl completion zsh)
-
-source ~/.iterm2_shell_integration.zsh
-
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-
-
-declare -A K8S_CLUSTER_ALIASES=(
-  "gke_d-platform-gke-project-hsw_us-central1-a_central-cluster" "dev-gke"
-  "gke_p-platform-gke-project-qjo_us-central1-a_central-cluster" "prod-gke"
-)
-
-function kube_ps1() {
-  local context=$(kubectl config current-context 2>/dev/null)
-  local namespace=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
-  if [ $? -eq 0 ]; then
-    local alias="${K8S_CLUSTER_ALIASES[$context]:-$context}" # Use alias if available
-    namespace=${namespace:-default} # Fallback to 'default' if namespace is empty
-    echo -n "⎈ $alias/$namespace"
-  fi
-}
-
-alias cluster-d='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project d-platform-gke-project-hsw'
-alias cluster-p='gcloud container clusters get-credentials central-cluster --zone us-central1-a --project p-platform-gke-project-qjo'
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-autoload bashcompinit && bashcompinit
-source $(brew --prefix)/etc/bash_completion.d/az
-
-export MANPATH="/usr/local/man:$MANPATH"
-export PATH=$PATH:$(go env GOPATH)/bin:$HOME/go/bin
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/walkerobrien/google-cloud-sdk/completion.zsh.inc'; fi
-
-export PATH=/Users/walkerobrien/.groundcover/bin:${PATH}
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/walkerobrien/.rd/bin:$PATH"

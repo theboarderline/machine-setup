@@ -72,6 +72,7 @@ nvim_tree.setup {
   filters = {
     dotfiles = false,
     custom = {},
+    git_ignored = false,  -- Show git ignored files
     exclude = {
       "node_modules",
       "__pycache__",
